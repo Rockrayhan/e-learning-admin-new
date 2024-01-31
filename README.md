@@ -6,6 +6,9 @@
  4. Products
  id  name  
 
+5. Instructors
+id  name    c_id    email   password    l_id
+
  5. category
  6. Manufacturers
  7. Cart Items
