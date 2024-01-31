@@ -24,7 +24,7 @@
         href="index.html"
         class="inline-block text-2xl font-bold tracking-wider uppercase text-primary-dark dark:text-light"
       >
-      Welcome to Dashboard
+      Dashboard 
       </a>
 
       <!-- Mobile sub menu button -->

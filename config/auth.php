@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins', //table admins
         ],
+        // for instructor guard
+        'instructor' => [
+            'driver' => 'session',
+            'provider' => 'instructors', //table instructors
+        ],
     ],
 
     /*
@@ -72,6 +77,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,  
+        ],
+        'instructors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Instructor::class,  
         ],
 
         // 'users' => [
@@ -107,6 +116,12 @@ return [
             'throttle' => 60,
         ],
         'admins' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'instructors' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,

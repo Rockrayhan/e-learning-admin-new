@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailsController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -95,6 +96,16 @@ Route::middleware('auth')->group(function () {
     Route::post('login/owner',[AdminController::class, 'login'])->name('admin.login');
     Route::post('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
+
+
+// });
+
+// Route::prefix('instructor')->group(function(){
+
+    Route::get('instructor/login',[InstructorController::class, 'index'])->name('instructor_login_form');
+    Route::post('login/instructor',[InstructorController::class, 'login'])->name('instructor.login');
+    Route::post('instructor/logout', [InstructorController::class, 'destroy'])->name('instructor.logout');
+    Route::get('instructor/dashboard',[InstructorController::class, 'dashboard'])->name('instructor.dashboard')->middleware('instructor');
 
 
 // });
