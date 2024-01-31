@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../build/css/tailwind.css" />
+    <link rel="stylesheet" href="{{asset('backend/css/tailwind.css')}}" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
   </head>
   <body>
@@ -28,7 +28,7 @@
           href="../index.html"
           class="inline-block mb-6 text-3xl font-bold tracking-wider uppercase text-primary-dark dark:text-light"
         >
-         Welcome Admin
+         Welcome User
         {{-- actual users table --}}
         </a>
         <main>
@@ -42,7 +42,7 @@
           </div>
       @endif
           <div class="w-full max-w-sm px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker">
-            <h1 class="text-xl font-semibold text-center">Admin Login</h1>
+            <h1 class="text-xl font-semibold text-center">User Login</h1>
             <form class="space-y-6" method="POST" action="{{ route('login') }}">
               @csrf
               <input

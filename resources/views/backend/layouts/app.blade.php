@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{asset('build/css/tailwind.css')}}" />
+    <link rel="stylesheet" href="{{asset('backend/css/tailwind.css')}}" />
     <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.5.x/dist/component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
   </head>
@@ -623,7 +623,7 @@
 
     <!-- All javascript code in this project for now is just for demo DON'T RELY ON IT  -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
-    <script src="{{asset('build/js/script.js')}}"></script>
+    <script src="{{asset('backend/js/script.js')}}"></script>
     <script>
       const setup = () => {
         const getTheme = () => {
