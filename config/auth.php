@@ -40,6 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users', //table users
         ],
+        // for admin guard
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins', //table admins
@@ -100,6 +101,12 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,

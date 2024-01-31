@@ -89,10 +89,15 @@ Route::middleware('auth')->group(function () {
 });
 
 
-//routes for admin
-// Route::get('admin/login', [AdminController::class,'login']) ;
-// Route::post('admin/login', [AdminController::class,'store'])->name('adminLogin') ;
-// Route::get('admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
+// Route::prefix('admin')->group(function(){
+
+    Route::get('admin/login',[AdminController::class, 'index'])->name('admin_login_form');
+    Route::post('login/owner',[AdminController::class, 'login'])->name('admin.login');
+    Route::post('logout', [AdminController::class, 'destroy'])->name('admin.logout');
+    Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
+
+
+// });
 
 
 

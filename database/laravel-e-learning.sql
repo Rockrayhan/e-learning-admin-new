@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2024 at 11:06 AM
+-- Generation Time: Jan 31, 2024 at 10:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel-healthcare`
+-- Database: `laravel-e-learning`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,6 @@ CREATE TABLE `admins` (
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 0,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -43,8 +42,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$/E1ycA8kAElLafs7jJFKVOh5G5Wt7OMgvS3LpaAu5ZXYHqVMfbPtS', 1, NULL, '2024-01-22 07:34:19', '2024-01-22 07:34:19');
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'mr Admin', 'admin@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, '2024-01-31 09:03:35', '2024-01-31 09:03:35');
 
 -- --------------------------------------------------------
 
@@ -159,7 +158,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2024_01_22_064122_create_admins_table', 3),
 (25, '2024_01_22_093435_create_catelogues_table', 4),
 (26, '2024_01_22_154159_create_migrations_table', 5),
-(27, '2024_01_23_070024_create_orders_table', 6);
+(27, '2024_01_23_070024_create_orders_table', 6),
+(28, '2024_01_31_090131_create_admins_table', 7);
 
 -- --------------------------------------------------------
 
@@ -390,7 +390,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orders`
