@@ -22,7 +22,7 @@
                                 <ul>
                                     <li><a href="#">User</a></li>
                                     <li><a href="#">Instructor</a></li>
-                                    <li><a href="/dashboard">admin</a></li>
+                                    <li><a href="/admin/login">admin</a></li>
                                 </ul>
                             </div>
                         </div>
