@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
@@ -46,6 +47,15 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      */
+
+     public function myLesson()
+     {
+        $instrutor_id = Auth::guard('instructor')->user()->id;
+        $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
+         return view('backend.lessons.mylesson', compact('lesson')) ;
+     }
+
+
     public function show(string $id)
     {
         //

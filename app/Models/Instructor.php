@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,10 +16,14 @@ class Instructor extends Authenticatable
     protected $guard = 'instructor' ; 
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+        'name','email','password'];
+
+
+        public function lesson(): HasMany
+    {
+        return $this->hasMany(Lesson::class);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

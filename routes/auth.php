@@ -152,6 +152,9 @@ Route::get('manufacturer/delete/{id}', [ManufacturerController::class, 'destroy'
 Route::get('lesson', [LessonController::class, 'index']) 
 ->name('lesson');  
 
+Route::get('/lesson/mylesson', [LessonController::class, 'myLesson']) 
+->name('lesson');  
+
 Route::get('lesson/create', [LessonController::class, 'create']) 
 ->name('lesson.create');  
 
