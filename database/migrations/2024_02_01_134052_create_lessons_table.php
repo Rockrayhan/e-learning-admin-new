@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name' , 100);
             $table->tinyInteger('product_id')->nullable();
             $table->tinyInteger('instructor_id')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -13,8 +14,9 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $data['lesson'] = Lesson::all();
-        return view('backend.lessons.index', $data) ;
+        $lesson = Lesson::all();
+        $product = Product::all();
+        return view('backend.lessons.index', compact('lesson', 'product')) ;
     }
 
     /**
@@ -22,7 +24,8 @@ class LessonController extends Controller
      */
     public function create()
     {
-        return view('backend.lessons.create') ;
+        $product = Product::all();
+        return view('backend.lessons.create', compact('product')) ;
     }
 
     /**
@@ -30,10 +33,12 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        $data  = ['name' => $request->name];
+        $data  = ['name' => $request->name,
+                    'product_id'=>$request->cats 
+    ];
 
         $model = new Lesson();
-        if ( $model->insert($data) ){
+        if ( $model->create($data) ){
             return redirect('lesson')->with('msg' , 'Successfully lesson added');
         }
     }

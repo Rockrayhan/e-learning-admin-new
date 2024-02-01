@@ -96,7 +96,6 @@
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->manufacturer->name}}
                 </td>
-
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <img src="{{asset('images/'.$item['image'])}}" height="50px" width="50px" alt="">
                 </td>

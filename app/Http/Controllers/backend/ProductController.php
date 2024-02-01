@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Lesson;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use Dflydev\DotAccessData\Data;

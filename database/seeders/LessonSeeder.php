@@ -14,13 +14,18 @@ class LessonSeeder extends Seeder
     public function run(): void
     {
         DB::table('lessons')->insert(
-         
             [
             'name' => "Data Spamming",
             "product_id" => "2",
             "instructor_id" => "2"
             ],
-        
+        );
+        DB::table('lessons')->insert(
+            [
+            'name' => "Basic Data Entry",
+            "product_id" => "1",
+            "instructor_id" => "1"
+            ],
         );
     }
 }
