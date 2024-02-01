@@ -19,6 +19,8 @@ return new class extends Migration
             $table->tinyInteger('category_id');
             $table->tinyInteger('manufacturer_id');
             $table->string('image' , 100)->nullable();
+            $table->tinyInteger('instructor_id')->nullable();
+            $table->tinyInteger('student_id')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

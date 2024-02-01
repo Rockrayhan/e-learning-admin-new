@@ -1,16 +1,16 @@
 ======= database tables ========
 
-1. Course Manage
-id  name   description   price   image  instructor_id    student_id     status
+1. Course/Product Manage
+id  name   description   price   image      instructor_id      student_id   manufacturer_id(topic)   status     
 
 
 
 2. Instructors
-id  name    email   password    instructor_id    course_id
+id  name    email   password    instructor_id    product_id
 
 
 3. Students
-id  name    email   password    course_id   
+id  name    email   password    product_id   
 
 
 4. category
@@ -23,7 +23,7 @@ id name
 
 
  6. Lessons
-id     name     course_id       instructor_id
+id     name     product_id       instructor_id
 
 
  7. Orders
@@ -31,7 +31,7 @@ id  Student_name    phone   course_name   Course_id   student_id   status
 
 
  8. Payments
- id     student_id     course_id    type    t_id
+ id     student_id     product_id    type    t_id
 
 
  9. Blogs/Catalogue
@@ -47,4 +47,6 @@ id     name    description       student_id     rating
 
  7. Cart Items
  8. Discount
+
+
  

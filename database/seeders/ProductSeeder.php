@@ -13,69 +13,85 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-            DB::table('products')->insert([
-            'name' => "Hand sanitizer",
+        DB::table('products')->insert([
+            'name' => "Data Analysis",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'120',
-            'category_id' =>'1',
-            'manufacturer_id' =>'1',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Plastic face shield",
+            'price' => '120',
+            'category_id' => '1',
+            'manufacturer_id' => '1',
+            'instructor_id'=>'1',
+            'student_id'=> '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "Linux Basic To Advance",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'130',
-            'category_id' =>'1',
-            'manufacturer_id' =>'1',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Glass face mask",
+            'price' => '130',
+            'category_id' => '1',
+            'manufacturer_id' => '1',
+            'instructor_id' => '1',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "MS expert",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'140',
-            'category_id' =>'2',
-            'manufacturer_id' =>'2',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Saftey mask",
+            'price' => '140',
+            'category_id' => '2',
+            'manufacturer_id' => '2',
+            'instructor_id' => '1',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "Prompt Engineering",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'150',
-            'category_id' =>'2',
-            'manufacturer_id' =>'2',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Plastic face shield",
+            'price' => '150',
+            'category_id' => '2',
+            'manufacturer_id' => '2',
+            'instructor_id' => '1',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "AI learning",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'140',
-            'category_id' =>'3',
-            'manufacturer_id' =>'3',
-            ]);
-            DB::table('products')->insert([
-            'name' => "N95 face mask",
+            'price' => '140',
+            'category_id' => '3',
+            'manufacturer_id' => '3',
+            'instructor_id' => '2',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "Graphics Design",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'150',
-            'category_id' =>'3',
-            'manufacturer_id' =>'3',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Oxygen mask",
+            'price' => '150',
+            'category_id' => '3',
+            'manufacturer_id' => '3',
+            'instructor_id' => '2',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "Facebook Marketing",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'140',
-            'category_id' =>'3',
-            'manufacturer_id' =>'3',
-            ]);
-            DB::table('products')->insert([
-            'name' => "Hand gloves",
+            'price' => '140',
+            'category_id' => '3',
+            'manufacturer_id' => '3',
+            'instructor_id' => '2',
+            'student_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'name' => "Digital Marketing",
             'description' => 'This is product description',
             'image' =>  'images/no_photo.jpg',
-            'price' =>'150',
-            'category_id' =>'3',
-            'manufacturer_id' =>'3',
-            ]);
+            'price' => '150',
+            'category_id' => '3',
+            'manufacturer_id' => '3',
+            'instructor_id' => '2',
+            'student_id' => '2',
+        ]);
     }
 }

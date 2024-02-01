@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CatelogueController;
+use App\Http\Controllers\backend\LessonController;
 use App\Http\Controllers\backend\ManufacturerController;
 use App\Http\Controllers\backend\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,7 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 });
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('admin')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
@@ -147,6 +148,25 @@ Route::get('manufacturer/delete/{id}', [ManufacturerController::class, 'destroy'
 
 
 
+// Lessons
+Route::get('lesson', [LessonController::class, 'index']) 
+->name('lesson');  
+
+Route::get('lesson/create', [LessonController::class, 'create']) 
+->name('lesson.create');  
+
+Route::post('lesson/store', [LessonController::class, 'store']) 
+->name('lesson.store');  
+
+Route::get('lesson/edit/{id}', [LessonController::class, 'edit']) 
+->name('lesson.edit');  
+
+Route::post('lesson/update/{id}', [LessonController::class, 'update']) 
+->name('lesson.update');  
+
+Route::get('lesson/delete/{id}', [LessonController::class, 'destroy']) 
+->name('lesson.delete');  
 
 
-});
+
+// });
