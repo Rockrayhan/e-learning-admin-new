@@ -14,6 +14,7 @@ class ProductDetailsController extends Controller
     public function index($id)
     {
         $products = Product::find($id);
+        $products->load('lesson');
         return view('frontend.productDetails', compact('products'));
     }
 

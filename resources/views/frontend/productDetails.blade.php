@@ -170,6 +170,12 @@
 									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut. Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue.</p>
 								</div>
 								<div class="news_post_link"><a href="#">Read More</a></div>
+								<h2>Product Lessons:</h2>
+								<ul>
+									@foreach ($products->lesson as $lesson) {{-- Use the correct relationship method name --}}
+										<li>{{ $lesson->name }}</li>
+									@endforeach
+								</ul>
 							</div>
 						</div>
 
