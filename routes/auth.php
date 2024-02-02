@@ -14,6 +14,7 @@ use App\Http\Controllers\backend\CatelogueController;
 use App\Http\Controllers\backend\LessonController;
 use App\Http\Controllers\backend\ManufacturerController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -169,6 +170,30 @@ Route::post('lesson/update/{id}', [LessonController::class, 'update'])
 
 Route::get('lesson/delete/{id}', [LessonController::class, 'destroy']) 
 ->name('lesson.delete');  
+
+
+
+// Review
+Route::get('review', [ReviewController::class, 'index']) 
+->name('lesson');  
+
+Route::get('/review/myreview', [ReviewController::class, 'myLesson']) 
+->name('lesson');  
+
+Route::get('review/create', [ReviewController::class, 'create']) 
+->name('review.create');  
+
+Route::post('review/store', [ReviewController::class, 'store']) 
+->name('review.store');  
+
+Route::get('review/edit/{id}', [ReviewController::class, 'edit']) 
+->name('review.edit');  
+
+Route::post('review/update/{id}', [ReviewController::class, 'update']) 
+->name('review.update');  
+
+Route::get('review/delete/{id}', [ReviewController::class, 'destroy']) 
+->name('review.delete');  
 
 
 

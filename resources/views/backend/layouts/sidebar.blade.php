@@ -201,6 +201,7 @@
 
 
 {{--  Manufacturer Link   --}}
+{{-- 
 <div x-data="{ isActive: false, open: false }">
   <!-- active classes 'bg-primary-100 dark:bg-primary' -->
   <a
@@ -261,7 +262,7 @@
       Insert Manufacturer
     </a>
   </div>
-</div>
+</div> --}}
 
 
 
@@ -405,9 +406,7 @@
 
 
 
-
-
-        <!-- Pages links -->
+        <!-- Reviews links -->
         <div x-data="{ isActive: false, open: false }">
           <!-- active classes 'bg-primary-100 dark:bg-primary' -->
           <a
@@ -431,11 +430,11 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm"> Pages </span>
+            <span class="ml-2 text-sm"> Reviews </span>
             <span aria-hidden="true" class="ml-auto">
               <!-- active class 'rotate-180' -->
               <svg
@@ -450,60 +449,36 @@
               </svg>
             </span>
           </a>
-          <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Pages">
+          <div x-show="open" class="mt-2 space-y-2 px-7" role="menu" arial-label="Components">
             <!-- active & hover classes 'text-gray-700 dark:text-light' -->
             <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
             <a
-              href="pages/blank.html"
+              href="/review"
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              Blank
+              ALL Review
             </a>
             <a
-              href="pages/404.html"
+              href="/review/create"
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              404
+              Insert Review
             </a>
             <a
-              href="pages/500.html"
+              href="/review/myreview"
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              500
-            </a>
-            <a
-              href="#"
-              role="menuitem"
-              class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
-            >
-              Profile (soon)
-            </a>
-            <a
-              href="#"
-              role="menuitem"
-              class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-            >
-              Pricing (soon)
-            </a>
-            <a
-              href="#"
-              role="menuitem"
-              class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-            >
-              Kanban (soon)
-            </a>
-            <a
-              href="#"
-              role="menuitem"
-              class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
-            >
-              Feed (soon)
+              My Review
             </a>
           </div>
         </div>
+
+
+
+
 
         <!-- Authentication links -->
         <div x-data="{ isActive: false, open: false}">

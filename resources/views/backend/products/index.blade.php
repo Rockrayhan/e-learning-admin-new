@@ -20,32 +20,21 @@
 @endif
 
 
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <div class="flex gap-4 justify-end p-5">
-      <!-- Category Filter -->
-    <div class="mb-4">
-        <label for="categoryFilter" class="text-sm font-medium text-gray-500 dark:text-gray-400">Filter by Category:</label>
-        <select id="categoryFilter" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            <option value="">All Categories</option>
-            @foreach ($cats as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-        </select>
+        <!-- Category Filter -->
+        <div class="mb-4">
+            <label for="categoryFilter" class="text-sm font-medium text-gray-500 dark:text-gray-400">Filter by Category:</label>
+            <select id="categoryFilter" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <option value="">All Categories</option>
+                @foreach ($cats as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
-    <!-- Manufacturer Filter -->
-    <div class="mb-4">
-        <label for="manufacturerFilter" class="text-sm font-medium text-gray-500 dark:text-gray-400">Filter by Manufacturer:</label>
-        <select id="manufacturerFilter" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            <option value="">All Manufacturers</option>
-            @foreach ($manufacturers as $manufacturer)
-                <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
-
-    </div>
 
 
     <table id="productTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -65,9 +54,6 @@
                     Category
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Manufacturer
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Image
                 </th>
                
@@ -79,31 +65,27 @@
 
         <tbody>
             @foreach ($products as $item)
-            <tr class="product-row bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" data-category="{{ $item->category->id }}" data-manufacturer="{{ $item->manufacturer->id }}"
-            >
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item['name']}}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item['description']}}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item['price']}}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item->category->name}}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item->manufacturer->name}}
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <img src="{{asset('images/'.$item['image'])}}" height="50px" width="50px" alt="">
-                </td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <a href="product/delete/{{$item['id']}}"> delete </a>
-                    <a href="product/edit/{{$item['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>   
-            </tr>
+                <tr class="product-row bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" data-category="{{ $item->category->id }}">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$item['name']}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$item['description']}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$item['price']}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$item->category->name}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <img src="{{asset('images/'.$item['image'])}}" height="50px" width="50px" alt="">
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <a href="product/delete/{{$item['id']}}"> delete </a>
+                        <a href="product/edit/{{$item['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>  
+                </tr>
             @endforeach
         </tbody>
     </table>
@@ -114,23 +96,22 @@
 
 
 
+
+
 <script>
-    // Add an event listener to handle changes in the category and manufacturer filters
+    // Add an event listener to handle changes in the category filter
     document.getElementById('categoryFilter').addEventListener('change', handleFilterChange);
-    document.getElementById('manufacturerFilter').addEventListener('change', handleFilterChange);
 
     function handleFilterChange() {
-        // Get the selected values from both filters
+        // Get the selected value from the category filter
         var selectedCategory = document.getElementById('categoryFilter').value;
-        var selectedManufacturer = document.getElementById('manufacturerFilter').value;
 
-        // Filter the table rows based on the selected values
+        // Filter the table rows based on the selected value
         var rows = document.querySelectorAll('.product-row');
         rows.forEach(function (row) {
             var categoryMatch = selectedCategory === '' || row.getAttribute('data-category') === selectedCategory;
-            var manufacturerMatch = selectedManufacturer === '' || row.getAttribute('data-manufacturer') === selectedManufacturer;
 
-            if (categoryMatch && manufacturerMatch) {
+            if (categoryMatch) {
                 row.style.display = 'table-row';
             } else {
                 row.style.display = 'none';

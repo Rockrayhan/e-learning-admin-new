@@ -40,7 +40,7 @@ id  Student_name    phone   course_name   Course_id   student_id   status
 
 
 10. review
-id     name    description       student_id     rating
+id     name     occupation    description       student_id     rating
 
 
 7. 
