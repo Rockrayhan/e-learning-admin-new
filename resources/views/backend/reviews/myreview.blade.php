@@ -19,10 +19,19 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Lessons name
+                    Review Title
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Course Name
+                    Occupation
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    rating
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Reviewer name
                 </th>
                
                 <th scope="col" class="px-6 py-3">
@@ -31,14 +40,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($lesson as $item)
+            @foreach ($reviews as $item)
                 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item['name']}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item->product->name}}
+                    {{$item['occupation']}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$item['description']}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$item['rating']}}
+                </td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$item->student->name}}
                 </td>
                 <td class="px-6 py-4 text-right">
                     <a href="category/delete/{{$item['id']}}"> delete </a>

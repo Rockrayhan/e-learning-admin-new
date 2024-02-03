@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2024 at 06:44 PM
+-- Generation Time: Feb 03, 2024 at 02:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -216,7 +216,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (29, '2024_01_31_170435_create_instructors_table', 8),
 (30, '2024_01_31_171305_create_instructors_table', 9),
 (31, '2024_02_01_113649_create_products_table', 10),
-(32, '2024_02_01_134052_create_lessons_table', 11);
+(32, '2024_02_01_134052_create_lessons_table', 11),
+(33, '2024_02_02_042518_create_reviews_table', 12),
+(34, '2024_02_03_012107_create_students_table', 13);
 
 -- --------------------------------------------------------
 
@@ -314,6 +316,59 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `ma
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `occupation` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `student_id` tinyint(4) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `rating` tinyint(4) NOT NULL DEFAULT 5,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `name`, `occupation`, `description`, `student_id`, `status`, `rating`, `created_at`, `updated_at`) VALUES
+(1, 'Best in the world', 'Web Developer', 'This is the review Description', 1, 1, 5, NULL, NULL),
+(2, 'Most Electrifying Course Ever', 'UI/UX Designer', 'This is the review Description', 1, 1, 4, NULL, NULL),
+(3, 'This is Phenominul', 'Student', 'This is the review Description', 2, 0, 3, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `product_id` tinyint(4) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `email`, `email_verified_at`, `password`, `product_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Student 1', 'stu1@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, NULL, '2024-02-03 01:48:14', '2024-02-03 01:48:14'),
+(2, 'Student 2', 'stu2@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, NULL, '2024-02-03 01:48:14', '2024-02-03 01:48:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -333,7 +388,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Mr. User', 'abc@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, '2024-01-21 09:19:55', '2024-01-21 09:19:55');
+(1, 'Mr. User', 'abc@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, '2024-01-21 09:19:55', '2024-01-21 09:19:55'),
+(2, 'User 22', 'user22@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, '2024-02-02 04:39:01', '2024-02-02 04:39:01');
 
 --
 -- Indexes for dumped tables
@@ -417,6 +473,19 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `students_email_unique` (`email`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -473,7 +542,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -494,10 +563,22 @@ ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

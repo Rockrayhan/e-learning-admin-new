@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('occupation', 50);
             $table->string('description', 200);
-            $table->tinyInteger('user_id')->nullable();
+            $table->tinyInteger('student_id')->nullable();
             $table->boolean('status')->default(1);
             $table->tinyInteger('rating')->default(5);
             $table->timestamps();

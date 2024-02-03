@@ -50,6 +50,11 @@ return [
             'driver' => 'session',
             'provider' => 'instructors', //table instructors
         ],
+        // for student guard
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students', //table students
+        ],
     ],
 
     /*
@@ -81,6 +86,10 @@ return [
         'instructors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Instructor::class,  
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,  
         ],
 
         // 'users' => [
@@ -122,6 +131,12 @@ return [
             'throttle' => 60,
         ],
         'instructors' => [
+            'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'students' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,

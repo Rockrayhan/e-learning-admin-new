@@ -12,8 +12,14 @@ class Review extends Model
     protected $fillable = ['name', 'occupation', 'description', 'rating'];
 
 
-    public function user(): BelongsTo  // this will be needed to show data
+    // public function user(): BelongsTo  // this will be needed to show data
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
+
+
+    public function student(): BelongsTo  // this will be needed to show data
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Student::class);
     }
 }

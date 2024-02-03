@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+
+class Student extends Authenticatable
 {
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,12 +19,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name','email','password'];
+    protected $fillable = ['name','email','password', 'product_id'];
+    
 
-    // public function review(): HasMany
-    // {
-    //     return $this->hasMany(Review::class);
-    // }
+    public function review(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

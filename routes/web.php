@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailsController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -106,6 +107,16 @@ Route::middleware('auth')->group(function () {
     Route::post('login/instructor',[InstructorController::class, 'login'])->name('instructor.login');
     Route::post('instructor/logout', [InstructorController::class, 'destroy'])->name('instructor.logout');
     Route::get('instructor/dashboard',[InstructorController::class, 'dashboard'])->name('instructor.dashboard')->middleware('instructor');
+
+
+// });
+
+// Route::prefix('student')->group(function(){
+
+    Route::get('student/login',[StudentController::class, 'index'])->name('student_login_form');
+    Route::post('login/student',[StudentController::class, 'login'])->name('student.login');
+    Route::post('student/logout', [StudentController::class, 'destroy'])->name('student.logout');
+    Route::get('student/dashboard',[StudentController::class, 'dashboard'])->name('student.dashboard')->middleware('student');
 
 
 // });

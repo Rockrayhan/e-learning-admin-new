@@ -177,7 +177,7 @@ Route::get('lesson/delete/{id}', [LessonController::class, 'destroy'])
 Route::get('review', [ReviewController::class, 'index']) 
 ->name('lesson');  
 
-Route::get('/review/myreview', [ReviewController::class, 'myLesson']) 
+Route::get('/review/myreview', [ReviewController::class, 'myReview']) 
 ->name('lesson');  
 
 Route::get('review/create', [ReviewController::class, 'create']) 

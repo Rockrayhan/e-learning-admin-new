@@ -49,9 +49,10 @@ class ReviewController extends Controller
 
      public function myReview()
      {
-        $instrutor_id = Auth::guard('instructor')->user()->id;
+        $student_id = Auth::guard('student')->user()->id;
         // $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
-         return view('backend.reviews.myreview', compact('lesson')) ;
+        $reviews = Review::where('student_id', $student_id)->get();
+         return view('backend.reviews.myreview', compact('reviews')) ;
      }
 
 
