@@ -164,7 +164,7 @@
                 />
               </svg>
             </span>
-            <span class="ml-2 text-sm"> Products </span>
+            <span class="ml-2 text-sm"> Courses </span>
             <span aria-hidden="true" class="ml-auto">
               <!-- active class 'rotate-180' -->
               <svg
