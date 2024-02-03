@@ -1,12 +1,12 @@
 ======= database tables ========
 
 1. Course/Product Manage
-id  name   description   price   image      instructor_id      student_id   manufacturer_id(topic)   status     
+id  name   description   price   image      instructor_id      student_id     status     
 
 
 
 2. Instructors
-id  name    email   password    instructor_id    product_id
+id  name    email   password    instructor_id    product_id     category_id
 
 
 3. Students

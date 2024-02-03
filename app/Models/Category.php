@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function instructor(): HasMany
+    {
+        return $this->hasMany(Instructor::class);
+    }
 }

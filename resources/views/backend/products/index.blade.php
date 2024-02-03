@@ -54,6 +54,9 @@
                     Category
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    InsTructor Name
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Image
                 </th>
                
@@ -77,6 +80,9 @@
                     </td>
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$item->category->name}}
+                    </td>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$item->instructor->name}}
                     </td>
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <img src="{{asset('images/'.$item['image'])}}" height="50px" width="50px" alt="">

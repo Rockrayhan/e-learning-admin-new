@@ -28,4 +28,10 @@ class Product extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+
+    public function instructor(): BelongsTo
+    {
+        return $this->belongsTo(Instructor::class);
+    }
 }

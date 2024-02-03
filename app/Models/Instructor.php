@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,8 +16,7 @@ class Instructor extends Authenticatable
 
     protected $guard = 'instructor' ; 
 
-    protected $fillable = [
-        'name','email','password'];
+    protected $fillable = ['name','email','password','category_id', 'product_id'];
 
 
         public function lesson(): HasMany
@@ -24,6 +24,19 @@ class Instructor extends Authenticatable
         return $this->hasMany(Lesson::class);
     }
 
+
+
+    public function category(): BelongsTo //use this to get data
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+
+
+    public function product(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

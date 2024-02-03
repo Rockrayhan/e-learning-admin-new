@@ -15,6 +15,7 @@ use App\Http\Controllers\backend\LessonController;
 use App\Http\Controllers\backend\ManufacturerController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\ReviewController;
+use App\Http\Controllers\InstructorController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -197,6 +198,32 @@ Route::post('review/status/{id}', [ReviewController::class, 'status'])
 
 Route::get('review/delete/{id}', [ReviewController::class, 'destroy']) 
 ->name('review.delete');  
+
+
+
+// Instructors
+Route::get('instructor', [InstructorController::class, 'show']) 
+->name('category');  
+
+Route::get('instructor/create', [InstructorController::class, 'create']) 
+->name('instructor.create');  // available this only for admin
+
+Route::get('/instructor/mycourses', [InstructorController::class, 'myCourses']) 
+->name('instructor.mycourses');  
+
+Route::post('instructor/store', [InstructorController::class, 'store']) 
+->name('instructor.store');  
+
+Route::get('instructor/edit/{id}', [InstructorController::class, 'edit']) 
+->name('instructor.edit');  
+
+Route::post('instructor/update/{id}', [InstructorController::class, 'update']) 
+->name('instructor.update');  
+
+Route::get('instructor/delete/{id}', [InstructorController::class, 'destroy']) 
+->name('instructor.delete');  
+
+
 
 
 
