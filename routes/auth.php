@@ -192,6 +192,9 @@ Route::get('review/edit/{id}', [ReviewController::class, 'edit'])
 Route::post('review/update/{id}', [ReviewController::class, 'update']) 
 ->name('review.update');  
 
+Route::post('review/status/{id}', [ReviewController::class, 'status']) 
+->name('review.status');  
+
 Route::get('review/delete/{id}', [ReviewController::class, 'destroy']) 
 ->name('review.delete');  
 

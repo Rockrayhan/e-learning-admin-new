@@ -2,12 +2,19 @@
 
 
 @section('content')
-<h1 class="text-red-600"> Insert Lesson </h1>
+<h1 class="text-teal-600 font-bold text-3xl text-center my-6"> Insert Lesson </h1>
  
 
 
 <form class="max-w-sm mx-auto" method="POST" action="{{route('lesson.store')}}">
     @csrf
+
+    {{-- <div class="mb-5"> --}}
+      {{-- <label  class="block mb-2 text-sm font-medium text-white">Instrutor id</label> --}}
+      <input type="hidden" name="instructor_id" value="{{Auth::guard('instructor')->user()->id}}"
+        class=" p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+    {{-- </div> --}}
+
     <div class="mb-5">
       <label  class="block mb-2 text-sm font-medium text-white">Lesson Name</label>
       <input type="text" name="name"  class=" p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>

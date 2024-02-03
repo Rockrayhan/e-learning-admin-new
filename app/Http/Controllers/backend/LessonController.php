@@ -5,19 +5,20 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $lesson = Lesson::all();
         $product = Product::all();
-        return view('backend.lessons.index', compact('lesson', 'product')) ;
+        return view('backend.lessons.index', compact('lesson', 'product'));
     }
 
     /**
@@ -26,7 +27,7 @@ class LessonController extends Controller
     public function create()
     {
         $product = Product::all();
-        return view('backend.lessons.create', compact('product')) ;
+        return view('backend.lessons.create', compact('product'));
     }
 
     /**
@@ -34,13 +35,16 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        $data  = ['name' => $request->name,
-                    'product_id'=>$request->cats 
-    ];
+        $data  = [
+            'name' => $request->name,
+            'product_id' => $request->cats,
+            'instructor_id' => $request->instructor_id,
+
+        ];
 
         $model = new Lesson();
-        if ( $model->create($data) ){
-            return redirect('lesson')->with('msg' , 'Successfully lesson added');
+        if ($model->create($data)) {
+            return redirect('lesson')->with('msg', 'Successfully lesson added');
         }
     }
 
@@ -48,12 +52,12 @@ class LessonController extends Controller
      * Display the specified resource.
      */
 
-     public function myLesson()
-     {
+    public function myLesson()
+    {
         $instrutor_id = Auth::guard('instructor')->user()->id;
         $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
-         return view('backend.lessons.mylesson', compact('lesson')) ;
-     }
+        return view('backend.lessons.mylesson', compact('lesson'));
+    }
 
 
     public function show(string $id)
@@ -93,9 +97,9 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        $data = Lesson::find($id) ;
+        $data = Lesson::find($id);
         $data->delete();
         return redirect('/lesson')->with('msg', 'Your data has been deleted');
     }

@@ -24,7 +24,6 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        // $product = Product::all();
         return view('backend.reviews.create') ;
     }
 
@@ -34,7 +33,11 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $data  = ['name' => $request->name,
-                    'product_id'=>$request->cats 
+                    'student_id'=>$request->student_id,
+                    'occupation'=>$request->occupation,
+                    'description'=>$request->description,
+                    'description'=>$request->description,
+                    'rating'=>$request->rating,
     ];
 
         $model = new Review();
@@ -59,6 +62,17 @@ class ReviewController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+
+    public function status( Request $request,$id)
+    {
+        $review = Review::find($id);
+        $data = [
+            'status' => $request->status 
+            ] ;
+        $review->update($data);
+        return redirect('/review')->with('msg', 'Status Updated') ;
     }
 
     /**

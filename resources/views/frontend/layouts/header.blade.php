@@ -20,7 +20,7 @@
                             </ul>
                             <div class="top_bar_login ml-auto">
                                 <ul>
-                                    <li><a href="/login">User</a></li>
+                                    <li><a href="/student/dashboard">User</a></li>
                                     <li><a href="/instructor/dashboard">Instructor</a></li>
                                     <li><a href="/admin/dashboard">admin</a></li>
                                 </ul>

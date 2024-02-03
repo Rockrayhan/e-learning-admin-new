@@ -19,7 +19,37 @@
                                         <div class="home_logo"><img src="{{ asset('frontend/images/home_logo.png') }}"
                                                 alt=""></div>
                                         <div class="home_text">
-                                            <div class="home_title">Complete Online Courses</div>
+                                            <div class="home_title" style="color: orange">Ektu Khani Tech</div>
+                                            <div class="home_subtitle"> Get all your courses at a resonable price </div>
+                                        </div>
+                                        <div class="home_buttons">
+                                            <div class="button home_button"><a href="#">learn more<div
+                                                        class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div></a></div>
+                                            <div class="button home_button"><a href="#">see all courses<div
+                                                        class="button_arrow"><i class="fa fa-angle-right"
+                                                            aria-hidden="true"></i></div></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Item -->
+                <div class="owl-item">
+                    <!-- Background image artist https://unsplash.com/@benwhitephotography -->
+                    <div class="home_slider_background" style="background-image:url(frontend/images/index.jpg)"></div>
+                    <div class="home_container">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="home_content text-center">
+                                        <div class="home_logo"><img src="{{ asset('frontend/images/home_logo.png') }}"
+                                                alt=""></div>
+                                        <div class="home_text">
+                                            <div class="home_title" style="color: orange">Ektu Khani Tech</div>
                                             <div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi
                                                 tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
                                                 augue ut, fermentum ipsum.</div>
@@ -51,39 +81,7 @@
                                         <div class="home_logo"><img src="{{ asset('frontend/images/home_logo.png') }}"
                                                 alt=""></div>
                                         <div class="home_text">
-                                            <div class="home_title">Complete Online Courses</div>
-                                            <div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi
-                                                tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
-                                                augue ut, fermentum ipsum.</div>
-                                        </div>
-                                        <div class="home_buttons">
-                                            <div class="button home_button"><a href="#">learn more<div
-                                                        class="button_arrow"><i class="fa fa-angle-right"
-                                                            aria-hidden="true"></i></div></a></div>
-                                            <div class="button home_button"><a href="#">see all courses<div
-                                                        class="button_arrow"><i class="fa fa-angle-right"
-                                                            aria-hidden="true"></i></div></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slider Item -->
-                <div class="owl-item">
-                    <!-- Background image artist https://unsplash.com/@benwhitephotography -->
-                    <div class="home_slider_background" style="background-image:url(frontend/images/index.jpg)"></div>
-                    <div class="home_container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="home_content text-center">
-                                        <div class="home_logo"><img src="{{ asset('frontend/images/home_logo.png') }}"
-                                                alt=""></div>
-                                        <div class="home_text">
-                                            <div class="home_title">Complete Online Courses</div>
+                                            <div class="home_title" style="color: orange">Ektu Khani Tech</div>
                                             <div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi
                                                 tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
                                                 augue ut, fermentum ipsum.</div>
@@ -207,7 +205,8 @@
                                                 <div class="course_tag"><a href="#"> {{ $item->category->name }}
                                                     </a></div>
                                                 <div class="course_price ml-auto">Price:
-                                                    <span>{{ floor($item['price']) }}</span></div>
+                                                    <span>{{ floor($item['price']) }}</span>
+                                                </div>
                                             </div>
                                             <div class="course_title">
                                                 <h3><a href="/product/details/{{ $item['id'] }}">{{ $item['name'] }}</a>
@@ -555,6 +554,70 @@
                         <div class="button join_button"><a href="#">register now<div class="button_arrow"><i
                                         class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
                     </div>
+
+
+                    {{-- review --}}
+                    <div class="courses_slider_container">
+                        <div class="owl-carousel owl-theme courses_slider">
+                            <!-- Slider Item -->
+                            @foreach ($reviews as $item)
+                                <div class="owl-item">
+                                    <div>
+                                        <div class="course_body">
+                                            <div
+                                                class="course_header d-flex flex-row align-items-center justify-content-start">
+                                                <div class="course_tag"><a href="#">
+                                                    </a></div>
+                                                <div class="course_price ml-auto">Rating:
+                                                    {{-- <span>
+                                                        {{ $item['rating'] }}
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor" class="bi bi-star-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                        </svg>
+                                                    </span> --}}
+
+                                                    <span>
+                                                        @for ($i = 1; $i <= $item['rating']; $i++)
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                            </svg>
+                                                        @endfor
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="course_title">
+                                                <h3><a href="#">{{ $item['name'] }}</a>
+                                                </h3>
+                                            </div>
+                                            <div class="course_text">{{ $item['description'] }}</div>
+                                            <div class="course_footer d-flex align-items-center justify-content-start">
+                                                <div class="course_author_image"><img
+                                                        src="{{ asset('frontend/images/featured_author.jpg') }}"
+                                                        alt="https://unsplash.com/@anthonytran"></div>
+                                                <div class="course_author_name">
+                                                    <h4>By {{ $item->student->name }}</h4>
+                                                    {{-- <h4>By {{ $item->occupation->name }}</h4> --}}
+                                                    <h5> {{ $item['occupation'] }} </h5>
+                                                </div>
+                                                <div class="course_sales ml-auto"><span>352</span> Sales</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Courses Slider Nav -->
+                        <div class="courses_slider_nav courses_slider_prev trans_200"><i class="fa fa-angle-left"
+                                aria-hidden="true"></i></div>
+                        <div class="courses_slider_nav courses_slider_next trans_200"><i class="fa fa-angle-right"
+                                aria-hidden="true"></i></div>
+                    </div>
+
 
                 </div>
             </div>

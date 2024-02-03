@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2024 at 02:57 AM
+-- Generation Time: Feb 03, 2024 at 09:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -159,7 +159,9 @@ INSERT INTO `lessons` (`id`, `name`, `product_id`, `instructor_id`, `created_at`
 (1, 'Simple Data Entry', 1, 1, NULL, NULL),
 (2, 'Data Spamming', 2, 2, NULL, NULL),
 (4, 'Basic English', 4, 2, '2024-02-01 09:42:37', '2024-02-01 09:42:37'),
-(5, 'What is data', 1, 1, '2024-02-01 10:09:43', '2024-02-01 10:09:43');
+(5, 'What is data', 1, 1, '2024-02-01 10:09:43', '2024-02-01 10:09:43'),
+(6, 'lesson from ins_1', 1, NULL, '2024-02-03 01:00:57', '2024-02-03 01:00:57'),
+(7, 'lesson from ins_2', 1, 2, '2024-02-03 01:06:06', '2024-02-03 01:06:06');
 
 -- --------------------------------------------------------
 
@@ -338,7 +340,8 @@ CREATE TABLE `reviews` (
 INSERT INTO `reviews` (`id`, `name`, `occupation`, `description`, `student_id`, `status`, `rating`, `created_at`, `updated_at`) VALUES
 (1, 'Best in the world', 'Web Developer', 'This is the review Description', 1, 1, 5, NULL, NULL),
 (2, 'Most Electrifying Course Ever', 'UI/UX Designer', 'This is the review Description', 1, 1, 4, NULL, NULL),
-(3, 'This is Phenominul', 'Student', 'This is the review Description', 2, 0, 3, NULL, NULL);
+(3, 'This is Phenominul', 'Student', 'This is the review Description', 2, 0, 3, NULL, NULL),
+(5, 'review from stu_1', 'new learner', 'asdsadasdasdasd', 1, 0, 1, '2024-02-03 01:53:09', '2024-02-03 02:36:13');
 
 -- --------------------------------------------------------
 
@@ -530,7 +533,7 @@ ALTER TABLE `instructors`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -566,7 +569,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `students`
