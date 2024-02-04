@@ -45,22 +45,22 @@ Route::get('/contact', function () {
 
 
 //frontend Orders
-Route::get('orders', [OrderController::class, 'index']) ;
+Route::get('orders', [OrderController::class, 'index']);
 
-Route::get('orders/create', [OrderController::class, 'create']) 
-->name('orders');
- 
-Route::post('orders/store', [OrderController::class, 'store']) 
-->name('orders.store');
+Route::get('orders/create', [OrderController::class, 'create'])
+    ->name('orders');
 
-Route::get('orders/edit/{id}', [OrderController::class, 'edit']) 
-->name('orders.edit');
+Route::post('orders/store', [OrderController::class, 'store'])
+    ->name('orders.store');
 
-Route::post('orders/update/{id}', [OrderController::class, 'update']) 
-->name('orders.update');
+Route::get('orders/edit/{id}', [OrderController::class, 'edit'])
+    ->name('orders.edit');
 
-Route::get('orders/delete/{id}', [OrderController::class, 'destroy']) 
-->name('orders.delete');
+Route::post('orders/update/{id}', [OrderController::class, 'update'])
+    ->name('orders.update');
+
+Route::get('orders/delete/{id}', [OrderController::class, 'destroy'])
+    ->name('orders.delete');
 
 
 
@@ -76,9 +76,9 @@ Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('r
 
 
 // frontend controllers
-Route::get('/', [HomeController::class, 'index']) ;
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details') ; 
+Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details');
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
@@ -87,40 +87,42 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');    
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 
 // Route::prefix('admin')->group(function(){
 
-    Route::get('admin/login',[AdminController::class, 'index'])->name('admin_login_form');
-    Route::post('login/owner',[AdminController::class, 'login'])->name('admin.login');
-    Route::post('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
-    Route::get('admin/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
+Route::get('admin/login', [AdminController::class, 'index'])->name('admin_login_form');
+Route::post('login/owner', [AdminController::class, 'login'])->name('admin.login');
+Route::post('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
 
 
 // });
 
 // Route::prefix('instructor')->group(function(){
 
-    Route::get('instructor/login',[InstructorController::class, 'index'])->name('instructor_login_form');
-    Route::post('login/instructor',[InstructorController::class, 'login'])->name('instructor.login');
-    Route::post('instructor/logout', [InstructorController::class, 'destroy'])->name('instructor.logout');
-    Route::get('instructor/dashboard',[InstructorController::class, 'dashboard'])->name('instructor.dashboard')->middleware('instructor');
+Route::get('instructor/login', [InstructorController::class, 'index'])->name('instructor_login_form');
+Route::post('login/instructor', [InstructorController::class, 'login'])->name('instructor.login');
+Route::post('instructor/logout', [InstructorController::class, 'destroy'])->name('instructor.logout');
+Route::get('instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard')->middleware('instructor');
 
 
 // });
 
 // Route::prefix('student')->group(function(){
 
-    Route::get('student/login',[StudentController::class, 'index'])->name('student_login_form');
-    Route::post('login/student',[StudentController::class, 'login'])->name('student.login');
-    Route::post('student/logout', [StudentController::class, 'destroy'])->name('student.logout');
-    Route::get('student/dashboard',[StudentController::class, 'dashboard'])->name('student.dashboard')->middleware('student');
+Route::get('student/login', [StudentController::class, 'index'])->name('student_login_form');
+Route::post('login/student', [StudentController::class, 'login'])->name('student.login');
+Route::post('student/logout', [StudentController::class, 'destroy'])->name('student.logout');
+Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard')->middleware('student');
+Route::get('/student/mycourses', [StudentController::class, 'myCourses'])->name('student.mycourses');
+
 
 
 // });
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

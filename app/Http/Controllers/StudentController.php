@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,13 @@ class StudentController extends Controller
         } else {
             return redirect()->route('student_login_form');
         }
+    }
+
+    public function myCourses()
+    {
+        $student_id = Auth::guard('student')->user()->id;
+        $product = Product::where('student_id', $student_id)->get();
+        return view('backend.Student.mycourse', compact('product'));
     }
 
 

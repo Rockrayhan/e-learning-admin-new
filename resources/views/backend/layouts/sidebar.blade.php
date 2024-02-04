@@ -484,7 +484,9 @@
           </div>
         </div>
 
-
+        <div>
+          <a href="/student/mycourses"> my courses for student </a>
+        </div>
 
         
         <!-- Instructors links -->

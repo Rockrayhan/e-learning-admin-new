@@ -27,6 +27,12 @@ class Student extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+
+    public function product(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
