@@ -78,7 +78,7 @@ Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('r
 // frontend controllers
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details');
+Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details')->middleware('student');
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class StudentController extends Controller
     public function myCourses()
     {
         $student_id = Auth::guard('student')->user()->id;
-        $product = Product::where('student_id', $student_id)->get();
+        $product = Order::where('student_id', $student_id)->get();
         return view('backend.Student.mycourse', compact('product'));
     }
 

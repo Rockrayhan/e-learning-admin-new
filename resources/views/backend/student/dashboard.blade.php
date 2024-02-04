@@ -4,22 +4,8 @@
 <main>
     <!-- Content header -->
     <div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
-      <h1 class="text-2xl font-semibold"> Student's Dashboard </h1>
-
-          {{-- logout/signout --}}
-          <form method="POST" action="{{ route('student.logout') }}">
-            @csrf
-            <a
-            role="menuitem"
-            class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-          >
-          <button>logout</button>
-        </a>
-          </form>
-            
-    
-
-
+      <h1 class="text-2xl font-semibold"> {{auth()->guard('student')->user()->name}} Dashboard </h1>
+      
       <a
         href="https://github.com/Kamona-WD/kwd-dashboard"
         target="_blank"

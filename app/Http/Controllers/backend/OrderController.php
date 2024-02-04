@@ -45,16 +45,18 @@ class OrderController extends Controller
     //   if ($validate) {
          // left side = db field | right side = input field
         $data = [
-            'u_name' => $request->u_name ,
+            'student_name' => $request->student_name ,
             'phone' => $request->phone ,
-            'p_name' => $request->p_name ,
-            'quantity' => $request->quantity ,
+            'email' => $request->email ,
+            'product_name' => $request->product_name ,
+            'student_id' => $request->student_id ,
+            'product_id' => $request->product_id ,
         ] ;
         // dd($data);
 
         $model = new Order();
         if( $model->insert($data)){
-            return back()->with('msg' , 'successfully inserted');
+            return back()->with('msg' , 'successfully Enrolled. Your Courses Will be available soon');
         }
     //   }
     }

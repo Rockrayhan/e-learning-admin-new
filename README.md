@@ -27,7 +27,7 @@ id     name     product_id       instructor_id
 
 
  7. Orders
-id  Student_name    phone   course_name   Course_id   student_id   status    
+id  Student_name  email   phone      product_name    product_id      student_id   status    
 
 
  8. Payments

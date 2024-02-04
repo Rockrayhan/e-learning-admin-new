@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1> All Lessons </h1>
+<h1> My Courses </h1>
 
 @if (session('msg'))
     <div class="col-sm-12">
@@ -35,7 +35,7 @@
                 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item['name']}}
+                    {{$item['product_name']}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{-- {{$item->product->name}} --}}

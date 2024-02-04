@@ -206,22 +206,35 @@
                         <form method="POST" action="{{ route('orders.store') }}" class="mb-4">
                             @csrf
                             <div class="form-group">
-                                <label for="u_name">Name:</label>
-                                <input type="text" name="u_name" class="form-control" placeholder="Enter Your Name">
+                                <label for="student_name">Name:</label>
+                                <input type="text" name="student_name" class="form-control" placeholder="Enter Your Name" value="{{Auth::guard('student')->user()->name}}">
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone:</label>
                                 <input type="text" name="phone" class="form-control" placeholder="Enter Phone">
                             </div>
                             <div class="form-group">
-                                <label for="p_name">Product Name:</label>
-                                <input type="text" name="p_name" class="form-control" value="{{ $products['name'] }}" readonly>
+                                <label for="phone">Email:</label>
+                                <input type="text" name="email" class="form-control" placeholder="Enter Email">
                             </div>
                             <div class="form-group">
-                                <label for="quantity">Quantity:</label>
-                                <input type="text" name="quantity" class="form-control" placeholder="Give your Quantity">
+                                <label for="product_name">Product Name:</label>
+                                <input type="text" name="product_name" class="form-control" value="{{ $products['name'] }}" readonly>
                             </div>
-                            <button type="submit" class="btn btn-primary">Order</button>
+                            <div class="form-group">
+                                Status
+                            </div>
+							{{-- get student id --}}
+							<div class="form-group">
+								<input type="text" name="student_id" value="{{Auth::guard('student')->user()->id}}">
+                            </div>
+							
+							{{-- get product id --}}
+							<div class="form-group">
+								<input type="text" name="product_id" value="{{$products['id'] }}">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Enroll</button>
                         </form>
                     </div>
                 </div>

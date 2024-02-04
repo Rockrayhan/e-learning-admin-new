@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2024 at 02:33 AM
+-- Generation Time: Feb 04, 2024 at 06:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -231,10 +231,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `u_name` varchar(100) NOT NULL,
+  `student_name` varchar(100) NOT NULL,
   `phone` varchar(50) NOT NULL,
-  `p_name` varchar(50) NOT NULL,
-  `quantity` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `student_id` tinyint(4) NOT NULL,
+  `product_id` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -243,13 +246,16 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `u_name`, `phone`, `p_name`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 'Masum', '1500000', 'Glass face mask', '50', '2024-01-25 07:09:17', '2024-01-25 07:09:17'),
-(2, 'Masum', '0155555', 'Hand gloves', '50', '2024-01-25 07:11:50', '2024-01-25 07:11:50'),
-(3, 'Masum', '0158080', 'Glass face mask', '50', '2024-01-25 07:14:50', '2024-01-25 07:14:50'),
-(4, 'Masum', '0158080', 'Glass face mask', '50', '2024-01-25 07:17:02', '2024-01-25 07:17:02'),
-(5, 'Masum', '0155555', 'Glass face mask', '50', '2024-01-25 07:19:54', '2024-01-25 07:19:54'),
-(6, 'Masum', '0155555', 'Glass face mask', '50', '2024-01-25 07:23:01', '2024-01-25 07:23:01');
+INSERT INTO `orders` (`id`, `student_name`, `phone`, `email`, `product_name`, `status`, `student_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 'Masum', '1500000', '', 'Glass face mask', 50, 0, 0, '2024-01-25 07:09:17', '2024-01-25 07:09:17'),
+(2, 'Masum', '0155555', '', 'Hand gloves', 50, 0, 0, '2024-01-25 07:11:50', '2024-01-25 07:11:50'),
+(3, 'Masum', '0158080', '', 'Glass face mask', 50, 0, 0, '2024-01-25 07:14:50', '2024-01-25 07:14:50'),
+(4, 'Masum', '0158080', '', 'Glass face mask', 50, 0, 0, '2024-01-25 07:17:02', '2024-01-25 07:17:02'),
+(5, 'Masum', '0155555', '', 'Glass face mask', 50, 0, 0, '2024-01-25 07:19:54', '2024-01-25 07:19:54'),
+(6, 'Masum', '0155555', '', 'Glass face mask', 50, 0, 0, '2024-01-25 07:23:01', '2024-01-25 07:23:01'),
+(7, 'Student 1', '0155555', 'stu1@gmail.com', 'Data Analysis', 1, 0, 0, '2024-02-04 16:47:16', '2024-02-04 16:47:16'),
+(8, 'Student 1', '0155555', 'alu@gmail.com', 'Data Analysis', 1, 1, 1, '2024-02-04 16:59:03', '2024-02-04 16:59:03'),
+(9, 'Student 2', '0155555', 'stu2@gmail.com', 'Prompt Engineering', 1, 2, 4, '2024-02-04 17:03:15', '2024-02-04 17:03:15');
 
 -- --------------------------------------------------------
 
@@ -553,7 +559,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
