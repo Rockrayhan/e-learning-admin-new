@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1> All Lessons </h1>
+<h1 class="text-center text-teal-400 text-3xl"> My Topics </h1>
 
 @if (session('msg'))
     <div class="col-sm-12">
@@ -19,7 +19,7 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    Lessons name
+                    Topic name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Course Name
