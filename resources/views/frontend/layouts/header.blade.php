@@ -1,7 +1,7 @@
 <!-- Header -->
 
 <header class="header">
-			
+
     <!-- Top Bar -->
     <div class="top_bar">
         <div class="top_bar_container">
@@ -10,7 +10,9 @@
                     <div class="col">
                         <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                             <ul class="top_bar_contact_list">
-                                <li><div class="question">Have any questions?</div></li>
+                                <li>
+                                    <div class="question">Have any questions?</div>
+                                </li>
                                 <li>
                                     <div>(009) 35475 6688933 32</div>
                                 </li>
@@ -29,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div>				
+        </div>
     </div>
 
     <!-- Header Content -->
@@ -47,11 +49,11 @@
                             </a>
                         </div>
                         <nav class="main_nav_contaner ml-auto">
-                            <ul class="main_nav">
-                                <li class="active"><a href="#">home</a></li>
+                            <ul class="main_nav d-flex">
+                                <li><a href="/">home</a></li>
                                 <li><a href="about.html">about us</a></li>
-                                <li><a href="courses.html">courses</a></li>
-                                <li><a href="news.html">news</a></li>
+                                <li><a href="/student/mycourses">My courses</a></li>
+                                <li><a href="/review/myreview">Review</a></li>
                                 <li><a href="contact.html">contact</a></li>
                                 <li class="ml-auto">
                                     <a href="#" class="btn btn-primary">
@@ -60,9 +62,33 @@
                                         <span class="badge badge-light">{{ count($cartItems) }}</span>
                                     </a>
                                 </li>
+
+                                <!-- Student Name -->
+                                {{-- <h4 class="text-danger font-weight-bold">
+                                    {{ Auth::guard('student')->check() ? 
+                                    Auth::guard('student')->user()->name 
+                                    : 
+                                    '' 
+                                    }}
+                                </h4> --}}
+
+                                <!-- Student Name -->
+<h5 class="text-danger font-weight-bold d-flex">
+    @auth('student')
+        {{ Auth::guard('student')->user()->name }}
+        <form method="POST" action="{{ route('student.logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-danger">
+                Logout
+            </button>
+        </form>
+    @else
+        <a href="/student/login"> Log In </a>
+    @endauth
+</h5>
+
                                 
                             </ul>
-                            <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
 
                             <!-- Hamburger -->
 
@@ -76,30 +102,17 @@
             </div>
         </div>
     </div>
-
-    <!-- Header Search Panel -->
-    <div class="header_search_container">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
-                        <form action="#" class="header_search_form">
-                            <input type="search" class="search_input" placeholder="Search" required="required">
-                            <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>			
-    </div>			
 </header>
 
 <!-- Menu -->
 
 <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-    <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+    <div class="menu_close_container">
+        <div class="menu_close">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
     <div class="search">
         <form action="#" class="header_search_form menu_mm">
             <input type="search" class="search_input menu_mm" placeholder="Search" required="required">

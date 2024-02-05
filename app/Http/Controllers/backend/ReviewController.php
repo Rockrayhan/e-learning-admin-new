@@ -24,7 +24,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('backend.reviews.create') ;
+        return view('frontend.review') ;
     }
 
     /**
@@ -42,7 +42,7 @@ class ReviewController extends Controller
 
         $model = new Review();
         if ( $model->create($data) ){
-            return redirect('lesson')->with('msg' , 'Successfully lesson added');
+            return redirect()->back()->with('msg' , 'Successfully Review added');
         }
     }
 
@@ -54,8 +54,8 @@ class ReviewController extends Controller
      {
         $student_id = Auth::guard('student')->user()->id;
         // $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
-        $reviews = Review::where('student_id', $student_id)->get();
-         return view('backend.reviews.myreview', compact('reviews')) ;
+        $myreview = Review::where('student_id', $student_id)->get();
+         return view('frontend.review', compact('myreview')) ;
      }
 
 

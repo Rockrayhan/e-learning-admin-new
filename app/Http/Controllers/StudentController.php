@@ -18,7 +18,7 @@ class StudentController extends Controller
         // dd($request->all()) ;
         if(Auth::guard('student')->attempt(['email'=>$request->email,
         "password"=>$request->password])){
-            return redirect()->route('/');
+            return redirect('/');
         } else {
             return redirect()->route('student_login_form');
         }
@@ -28,7 +28,7 @@ class StudentController extends Controller
     {
         $student_id = Auth::guard('student')->user()->id;
         $product = Order::where('student_id', $student_id)->get();
-        return view('backend.Student.mycourse', compact('product'));
+        return view('frontend.mycourses', compact('product'));
     }
 
 

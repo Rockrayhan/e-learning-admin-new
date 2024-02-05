@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>News</title>
+    <title>Courses</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Elearn project">
@@ -11,10 +11,8 @@
     <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
         type="text/css">
     <link href="{{ asset('frontend/plugins/video-js/video-js.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news_responsive.css') }}">
-
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/courses.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/courses_responsive.css') }}">
 </head>
 
 <body>
@@ -74,9 +72,27 @@
                                     <ul class="main_nav d-flex">
                                         <li><a href="/">home</a></li>
                                         <li><a href="about.html">about us</a></li>
-                                        <li><a href="courses.html">courses</a></li>
-                                        <li class="active"><a href="news.html">news</a></li>
+                                        <li><a href="/student/mycourses">My courses</a></li>
+                                        <li><a href="/review/myreview">Review</a></li>
                                         <li><a href="contact.html">contact</a></li>
+                                        <li class="ml-auto">
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i> Cart
+                                                @php $cartItems = session('cart') ?? []; @endphp
+                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                            </a>
+                                        </li>
+
+                                        <!-- Student Name -->
+                                        {{-- <h4 class="text-danger font-weight-bold">
+                                        {{ Auth::guard('student')->check() ? 
+                                        Auth::guard('student')->user()->name 
+                                        : 
+                                        '' 
+                                        }}
+                                    </h4> --}}
+
+                                        <!-- Student Name -->
                                         <h5 class="text-danger font-weight-bold d-flex">
                                             @auth('student')
                                                 {{ Auth::guard('student')->user()->name }}
@@ -91,7 +107,6 @@
                                             @endauth
                                         </h5>
                                     </ul>
-                                    
 
                                     <!-- Hamburger -->
 
@@ -99,6 +114,7 @@
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
                                 </nav>
+
 
                             </div>
                         </div>
@@ -168,186 +184,76 @@
             </div>
         </div>
 
-        <!-- News -->
 
-        <div class="news">
+
+        <!-- Courses -->
+
+        <div class="courses" style="margin-top: 100px">
             <div class="container">
                 <div class="row">
-
-                    <!-- News Posts -->
-                    <div class="col-lg-8">
-                        <div class="news_posts">
-
-                            <!-- News Post -->
-                            <div class="news_post mt-5">
-                                <div class="news_post_image"> <img class="img-fluid"
-                                        src="{{ asset('images/' . $products['image']) }}" alt=""> </div>
-                                <div class="news_post_body">
-                                    <div class="news_post_title"><a href="#"> {{ $products['name'] }} </a></div>
-                                    <div
-                                        class="news_post_meta d-flex flex-row align-items-start justify-content-start">
-                                        <div class="news_post_author">By <a href="#">William Smith</a></div>
-                                        <div class="news_post_comments"><a href="#">3 Comments</a></div>
-                                        <div class="news_post_tags">
-                                            <span>in </span>
-                                            <ul>
-                                                <li><a href="#">Social Media</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="news_post_text">
-                                        <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
-                                            pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
-                                            venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor
-                                            lorem convallis ut. Maecenas rutrum viverra sapien sed fermentum. Morbi
-                                            tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
-                                            augue.</p>
-                                    </div>
-                                    <div class="news_post_link"><a href="#">Read More</a></div>
-
-                                </div>
-                            </div>
-
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="section_title text-center">
+                            <h2>Choose your course</h2>
                         </div>
                     </div>
-
-                    <!-- Sidebar -->
-                    <div class="col-lg-4 mt-5">
-                        <div class="mt-5">
-
-							@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
-
-						@if (session('msg'))
-							<div class="alert alert-success">
-								{{ session('msg') }}
-							</div>
-						@endif
-                            {{-- Lesson / Topic --}}
-
-                            <div>
-                                <h2 class="my-5">Course Topics</h2>
-                                <ul>
-                                    @foreach ($products->lesson as $lesson)
-                                        <h4>
-                                            <li style="list-style-type: square">{{ $lesson->name }}</li>
-                                        </h4>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-
-                            {{-- Enroll --}}
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Enroll Now
-                            </button>
-
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Enroll Now</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                </div>
+                <!-- Course Search -->
+                <div class="row">
+                    <div class="col">
+                        <div class="course_search">
+                            <form action="#"
+                                class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
+                                <div><input type="text" class="course_input" placeholder="Course"
+                                        required="required"></div>
+                                <div><input type="text" class="course_input" placeholder="Level"
+                                        required="required"></div>
+                                <button class="course_button"><span>search course</span><span class="button_arrow"><i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row courses_row">
+                    @foreach ($product as $item)
+                        <!-- Course -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="course">
+                                <div class="course_image"><img src="images/course_1.jpg" alt=""></div>
+                                <div class="course_body">
+                                    <div
+                                        class="course_header d-flex flex-row align-items-center justify-content-start">
+                                        <div class="course_tag"><a href="#">Featured</a></div>
+                                        <div class="course_price ml-auto">Price: <span>$35</span></div>
+                                    </div>
+                                    <div class="course_title">
+                                        <h3><a href="courses.html"> {{ $item['product_name'] }} </a></h3>
+                                    </div>
+                                    <div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi
+                                        tempor odio eget lacus tempus pulvinar.</div>
+                                    <div class="course_footer d-flex align-items-center justify-content-start">
+                                        <div class="course_author_image"><img src="images/featured_author.jpg"
+                                                alt="https://unsplash.com/@anthonytran"></div>
+                                        <div class="course_author_name">By <a href="#">James S. Morrison</a>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="enroll-content">
-
-                                                <h2 class="mb-4"> Enroll Now </h2>
-                                                <form method="POST" action="{{ route('orders.store') }}"
-                                                    class="mb-4">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="student_name">Name:</label>
-                                                        <input type="text" name="student_name"
-                                                            class="form-control" placeholder="Enter Your Name"
-                                                            value="{{ Auth::guard('student')->user()->name }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="phone">Phone:</label>
-                                                        <input type="text" name="phone" class="form-control"
-                                                            placeholder="Enter Phone">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="phone">Email:</label>
-                                                        <input type="text" name="email" class="form-control"
-                                                            placeholder="Enter Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="product_name">Product Name:</label>
-                                                        <input type="text" name="product_name"
-                                                            class="form-control" value="{{ $products['name'] }}"
-                                                            readonly>
-                                                    </div>
-                                                    {{-- get student id --}}
-                                                    <input type="hidden" name="student_id"
-                                                        value="{{ Auth::guard('student')->user()->id }}">
-
-                                                    {{-- get product id --}}
-                                                    <input type="hidden" name="product_id"
-                                                        value="{{ $products['id'] }}">
-
-                                                    <div class="form-group">
-                                                        <label for="product_name">Product Price:</label>
-                                                        <input type="text" name="price" class="form-control"
-                                                            value="{{ $products['price'] }}" readonly>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label> Make Payment at: +880 168201 1307 </label> <br>
-
-                                                        <div class="d-flex"> 
-															<img
-                                                                src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA"
-                                                                width="50%" height="80px" alt="">
-
-                                                            <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg"
-                                                                width="50%" height="80px" alt="">
-                                                        </div>
-
-														<div class="d-flex">
-															<input type="radio" name="payment" value="bkash"
-                                                            class="form-control">
-                                                        <input type="radio" name="payment" value="nagad"
-                                                            class="form-control">
-														</div>
-
-														<div>
-															<label for="product_name">Enter Your Transaction ID</label>
-															<input type="text" name="t_id" class="form-control">
-														</div>
-
-                                                    </div>
-
-
-
-                                                    <button type="submit"
-                                                        class="btn btn-primary px-5">Enroll</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
+                                        <div class="course_sales ml-auto"><span>352</span> Sales</div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col">
+                        <div class="courses_paginations">
+                            <ul>
+                                <li class="active"><a href="#">01</a></li>
+                                <li><a href="#">02</a></li>
+                                <li><a href="#">03</a></li>
+                                <li><a href="#">04</a></li>
+                                <li><a href="#">05</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -454,7 +360,7 @@
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/plugins/parallax-js-master/parallax.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/news.js') }}"></script>
+    <script src="{{ asset('frontend/js/courses.js') }}"></script>
 </body>
 
 </html>

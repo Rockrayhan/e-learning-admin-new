@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>News</title>
+    <title>Courses</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Elearn project">
@@ -11,10 +11,8 @@
     <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
         type="text/css">
     <link href="{{ asset('frontend/plugins/video-js/video-js.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news_responsive.css') }}">
-
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/courses.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/courses_responsive.css') }}">
 </head>
 
 <body>
@@ -74,9 +72,27 @@
                                     <ul class="main_nav d-flex">
                                         <li><a href="/">home</a></li>
                                         <li><a href="about.html">about us</a></li>
-                                        <li><a href="courses.html">courses</a></li>
-                                        <li class="active"><a href="news.html">news</a></li>
+                                        <li><a href="/student/mycourses">My courses</a></li>
+                                        <li><a href="/review/myreview">Review</a></li>
                                         <li><a href="contact.html">contact</a></li>
+                                        <li class="ml-auto">
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i> Cart
+                                                @php $cartItems = session('cart') ?? []; @endphp
+                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                            </a>
+                                        </li>
+
+                                        <!-- Student Name -->
+                                        {{-- <h4 class="text-danger font-weight-bold">
+                                        {{ Auth::guard('student')->check() ? 
+                                        Auth::guard('student')->user()->name 
+                                        : 
+                                        '' 
+                                        }}
+                                    </h4> --}}
+
+                                        <!-- Student Name -->
                                         <h5 class="text-danger font-weight-bold d-flex">
                                             @auth('student')
                                                 {{ Auth::guard('student')->user()->name }}
@@ -91,7 +107,6 @@
                                             @endauth
                                         </h5>
                                     </ul>
-                                    
 
                                     <!-- Hamburger -->
 
@@ -99,6 +114,7 @@
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
                                 </nav>
+
 
                             </div>
                         </div>
@@ -168,191 +184,114 @@
             </div>
         </div>
 
-        <!-- News -->
 
-        <div class="news">
+
+        <!-- Courses -->
+
+        <div class="courses mb-5" style="margin-top: 100px">
             <div class="container">
                 <div class="row">
-
-                    <!-- News Posts -->
-                    <div class="col-lg-8">
-                        <div class="news_posts">
-
-                            <!-- News Post -->
-                            <div class="news_post mt-5">
-                                <div class="news_post_image"> <img class="img-fluid"
-                                        src="{{ asset('images/' . $products['image']) }}" alt=""> </div>
-                                <div class="news_post_body">
-                                    <div class="news_post_title"><a href="#"> {{ $products['name'] }} </a></div>
-                                    <div
-                                        class="news_post_meta d-flex flex-row align-items-start justify-content-start">
-                                        <div class="news_post_author">By <a href="#">William Smith</a></div>
-                                        <div class="news_post_comments"><a href="#">3 Comments</a></div>
-                                        <div class="news_post_tags">
-                                            <span>in </span>
-                                            <ul>
-                                                <li><a href="#">Social Media</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="news_post_text">
-                                        <p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod
-                                            pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem
-                                            venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor
-                                            lorem convallis ut. Maecenas rutrum viverra sapien sed fermentum. Morbi
-                                            tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
-                                            augue.</p>
-                                    </div>
-                                    <div class="news_post_link"><a href="#">Read More</a></div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Sidebar -->
-                    <div class="col-lg-4 mt-5">
-                        <div class="mt-5">
-
-							@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
-
-						@if (session('msg'))
-							<div class="alert alert-success">
-								{{ session('msg') }}
-							</div>
-						@endif
-                            {{-- Lesson / Topic --}}
-
-                            <div>
-                                <h2 class="my-5">Course Topics</h2>
-                                <ul>
-                                    @foreach ($products->lesson as $lesson)
-                                        <h4>
-                                            <li style="list-style-type: square">{{ $lesson->name }}</li>
-                                        </h4>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-
-                            {{-- Enroll --}}
-
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Enroll Now
-                            </button>
-
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Enroll Now</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="enroll-content">
-
-                                                <h2 class="mb-4"> Enroll Now </h2>
-                                                <form method="POST" action="{{ route('orders.store') }}"
-                                                    class="mb-4">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="student_name">Name:</label>
-                                                        <input type="text" name="student_name"
-                                                            class="form-control" placeholder="Enter Your Name"
-                                                            value="{{ Auth::guard('student')->user()->name }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="phone">Phone:</label>
-                                                        <input type="text" name="phone" class="form-control"
-                                                            placeholder="Enter Phone">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="phone">Email:</label>
-                                                        <input type="text" name="email" class="form-control"
-                                                            placeholder="Enter Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="product_name">Product Name:</label>
-                                                        <input type="text" name="product_name"
-                                                            class="form-control" value="{{ $products['name'] }}"
-                                                            readonly>
-                                                    </div>
-                                                    {{-- get student id --}}
-                                                    <input type="hidden" name="student_id"
-                                                        value="{{ Auth::guard('student')->user()->id }}">
-
-                                                    {{-- get product id --}}
-                                                    <input type="hidden" name="product_id"
-                                                        value="{{ $products['id'] }}">
-
-                                                    <div class="form-group">
-                                                        <label for="product_name">Product Price:</label>
-                                                        <input type="text" name="price" class="form-control"
-                                                            value="{{ $products['price'] }}" readonly>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label> Make Payment at: +880 168201 1307 </label> <br>
-
-                                                        <div class="d-flex"> 
-															<img
-                                                                src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA"
-                                                                width="50%" height="80px" alt="">
-
-                                                            <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg"
-                                                                width="50%" height="80px" alt="">
-                                                        </div>
-
-														<div class="d-flex">
-															<input type="radio" name="payment" value="bkash"
-                                                            class="form-control">
-                                                        <input type="radio" name="payment" value="nagad"
-                                                            class="form-control">
-														</div>
-
-														<div>
-															<label for="product_name">Enter Your Transaction ID</label>
-															<input type="text" name="t_id" class="form-control">
-														</div>
-
-                                                    </div>
-
-
-
-                                                    <button type="submit"
-                                                        class="btn btn-primary px-5">Enroll</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="section_title text-center">
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
+        @if (session('msg'))
+        <div class="col-sm-12">
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-gray-600" role="alert">
+                {{ session('msg') }}
+                    <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+                </div>
+        </div>
+    @endif
+
+        <section class="mt-5 mb-5 container ">
+            <div class="container w-75 border border-5 p-4">
+                <h2 class="text-center"> Give a review </h2>
+                <form class="max-w-sm mx-auto" method="POST" action="{{ route('review.store') }}">
+                    @csrf
+                
+                    <input type="hidden" name="student_id" value="{{ Auth::guard('student')->user()->id }}"
+                        class="form-control mb-3" required>
+                
+                    <div class="form-group mb-3">
+                        <label for="name" class="font-weight-bold">Review title</label>
+                        <input type="text" name="name" class="form-control" required placeholder="Give Your Name">
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label for="description" class="font-weight-bold">Description</label>
+                        <textarea name="description" class="form-control" cols="30" rows="5"></textarea>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label for="occupation" class="font-weight-bold">Your Occupation</label>
+                        <input type="text" name="occupation" class="form-control" required>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label class="font-weight-bold">Give Star Rating</label>
+
+                  <div class="d-flex">
+                    <div class="form-check">
+                        <input type="radio" value="1" name="rating" class="form-check-input"> One Star
+                    </div>
+                    <div class="form-check mx-4">
+                        <input type="radio" value="2" name="rating" class="form-check-input"> Two Star
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" value="3" name="rating" class="form-check-input"> Three Star
+                    </div>
+                    <div class="form-check mx-4">
+                        <input type="radio" value="4" name="rating" class="form-check-input"> Four Star
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" value="5" name="rating" class="form-check-input"> Five Star
+                    </div>
+                  </div>
+
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary btn-block w-50">Submit</button>
+                </form>
+                
+            </div>
+        </section>
+
+
+
+        <section class="mt-5 mb-5 container">
+            <h1>  My reviews </h1>
+
+            <div class="list-group">
+                @foreach ($myreview as $item)
+
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"> {{$item['name']}}</h5>
+                    <small>3 days ago</small>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                      <p class="mb-1"> {{$item['description']}}</p>
+
+                      <span>
+                        @for ($i = 1; $i <= $item['rating']; $i++)
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>
+                    @endfor
+                      </span>
+
+                  </div>
+                  
+                </a>
+                @endforeach
+                
+        </section>
 
         <!-- Footer -->
 
@@ -454,7 +393,7 @@
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/plugins/parallax-js-master/parallax.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/news.js') }}"></script>
+    <script src="{{ asset('frontend/js/courses.js') }}"></script>
 </body>
 
 </html>
