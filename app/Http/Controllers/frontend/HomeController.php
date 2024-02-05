@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Review;
@@ -16,9 +17,8 @@ class HomeController extends Controller
     public function index()
     {   $manufacturers = Manufacturer::all();
         $products = Product::all();
-        // $reviews = Review::all();
         $reviews = Review::where('status', 1)->get();
-        return view('frontend.home', compact('products', 'manufacturers', 'reviews'));
+        return view('frontend.home', compact('products', 'manufacturers', 'reviews',));
     }
     
 

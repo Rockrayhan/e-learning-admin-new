@@ -33,9 +33,14 @@ class Instructor extends Authenticatable
 
 
 
-    public function product(): HasMany
+    // public function product(): HasMany
+    // {
+    //     return $this->hasMany(Product::class);
+    // }
+
+    public function product(): BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
     /**

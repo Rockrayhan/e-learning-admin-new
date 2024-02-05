@@ -16,9 +16,9 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lesson = Lesson::all();
-        $product = Product::all();
-        return view('backend.lessons.index', compact('lesson', 'product'));
+        $lessons = Lesson::all();
+        $products = Product::all();
+        return view('backend.lessons.index', compact('lessons', 'products'));
     }
 
     /**
