@@ -64,6 +64,18 @@ class OrderController extends Controller
     //   }
     }
 
+    public function status( Request $request,$id)
+    {
+        $review = Order::find($id);
+        $data = [
+            'status' => $request->status 
+            ] ;
+        $review->update($data);
+        return back()->with('msg', 'Status Updated') ;
+    }
+
+
+
     /**
      * Display the specified resource.
      */

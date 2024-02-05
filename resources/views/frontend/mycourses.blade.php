@@ -23,36 +23,37 @@
 
         <header class="header">
 
-            <!-- Top Bar -->
-            <div class="top_bar">
-                <div class="top_bar_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <ul class="top_bar_contact_list">
-                                        <li>
-                                            <div class="question">Have any questions?</div>
-                                        </li>
-                                        <li>
-                                            <div>(009) 35475 6688933 32</div>
-                                        </li>
-                                        <li>
-                                            <div>info@elaerntemplate.com</div>
-                                        </li>
-                                    </ul>
-                                    <div class="top_bar_login ml-auto">
-                                        <ul>
-                                            <li><a href="#">Register</a></li>
-                                            <li><a href="#">Login</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+           <!-- Top Bar -->
+    <div class="top_bar">
+        <div class="top_bar_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                            <ul class="top_bar_contact_list">
+                                <li>
+                                    <div class="question">Have any questions?</div>
+                                </li>
+                                <li>
+                                    <div>(009) 35475 6688933 32</div>
+                                </li>
+                                <li>
+                                    <div>info@elaerntemplate.com</div>
+                                </li>
+                            </ul>
+                            <div class="top_bar_login ml-auto">
+                                <ul>
+                                    <li><a href="/student/dashboard">User</a></li>
+                                    <li><a href="/instructor/dashboard">Instructor</a></li>
+                                    <li><a href="/admin/dashboard">admin</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
             <!-- Header Content -->
             <div class="header_container">
@@ -193,26 +194,17 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="section_title text-center">
+                            @if(count($product) == 0)
+                            <h2>No Courses are available for you</h2>
+                        @else
                             <h2>Choose your course</h2>
+                        @endif
                         </div>
                     </div>
+                    
+
                 </div>
-                <!-- Course Search -->
-                <div class="row">
-                    <div class="col">
-                        <div class="course_search">
-                            <form action="#"
-                                class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
-                                <div><input type="text" class="course_input" placeholder="Course"
-                                        required="required"></div>
-                                <div><input type="text" class="course_input" placeholder="Level"
-                                        required="required"></div>
-                                <button class="course_button"><span>search course</span><span class="button_arrow"><i
-                                            class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+     
                 <div class="row courses_row">
                     @foreach ($product as $item)
                         <!-- Course -->
@@ -243,20 +235,6 @@
                     @endforeach
                 </div>
 
-                <!-- Pagination -->
-                <div class="row">
-                    <div class="col">
-                        <div class="courses_paginations">
-                            <ul>
-                                <li class="active"><a href="#">01</a></li>
-                                <li><a href="#">02</a></li>
-                                <li><a href="#">03</a></li>
-                                <li><a href="#">04</a></li>
-                                <li><a href="#">05</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

@@ -62,6 +62,8 @@ Route::post('orders/update/{id}', [OrderController::class, 'update'])
 Route::get('orders/delete/{id}', [OrderController::class, 'destroy'])
     ->name('orders.delete');
 
+    Route::post('order/status/{id}', [OrderController::class, 'status']) 
+->name('order.status');  
 
 
 
@@ -114,6 +116,8 @@ Route::get('instructor/dashboard', [InstructorController::class, 'dashboard'])->
 // Route::prefix('student')->group(function(){
 
 Route::get('student/login', [StudentController::class, 'index'])->name('student_login_form');
+Route::get('student/register', [StudentController::class, 'create'])->name('student.register');
+Route::post('student/store', [StudentController::class, 'store'])->name('student.store');
 Route::post('login/student', [StudentController::class, 'login'])->name('student.login');
 Route::post('student/logout', [StudentController::class, 'destroy'])->name('student.logout');
 Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard')->middleware('student');

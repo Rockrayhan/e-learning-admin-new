@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2024 at 02:45 AM
+-- Generation Time: Feb 05, 2024 at 08:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -235,7 +235,7 @@ CREATE TABLE `orders` (
   `phone` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `product_name` varchar(100) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `student_id` tinyint(4) NOT NULL,
   `product_id` tinyint(4) NOT NULL,
   `price` varchar(50) NOT NULL,
@@ -250,16 +250,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `student_name`, `phone`, `email`, `product_name`, `status`, `student_id`, `product_id`, `price`, `payment`, `t_id`, `created_at`, `updated_at`) VALUES
-(1, 'Masum', '1500000', '', 'Glass face mask', 50, 0, 0, '', '', '', '2024-01-25 07:09:17', '2024-01-25 07:09:17'),
-(2, 'Masum', '0155555', '', 'Hand gloves', 50, 0, 0, '', '', '', '2024-01-25 07:11:50', '2024-01-25 07:11:50'),
-(3, 'Masum', '0158080', '', 'Glass face mask', 50, 0, 0, '', '', '', '2024-01-25 07:14:50', '2024-01-25 07:14:50'),
-(4, 'Masum', '0158080', '', 'Glass face mask', 50, 0, 0, '', '', '', '2024-01-25 07:17:02', '2024-01-25 07:17:02'),
-(5, 'Masum', '0155555', '', 'Glass face mask', 50, 0, 0, '', '', '', '2024-01-25 07:19:54', '2024-01-25 07:19:54'),
-(6, 'Masum', '0155555', '', 'Glass face mask', 50, 0, 0, '', '', '', '2024-01-25 07:23:01', '2024-01-25 07:23:01'),
-(7, 'Student 1', '0155555', 'stu1@gmail.com', 'Data Analysis', 1, 0, 0, '', '', '', '2024-02-04 16:47:16', '2024-02-04 16:47:16'),
-(8, 'Student 1', '0155555', 'alu@gmail.com', 'Data Analysis', 1, 1, 1, '', '', '', '2024-02-04 16:59:03', '2024-02-04 16:59:03'),
 (9, 'Student 2', '0155555', 'stu2@gmail.com', 'Prompt Engineering', 1, 2, 4, '', '', '', '2024-02-04 17:03:15', '2024-02-04 17:03:15'),
-(10, 'Student 1', '0155555', 'abc@gmail.com', 'Data Analysis', 1, 1, 1, '120.00', 'nagad', '', '2024-02-05 01:27:40', '2024-02-05 01:27:40');
+(10, 'Student 1', '0155555', 'abc@gmail.com', 'Data Analysis', 1, 1, 1, '120.00', 'nagad', '', '2024-02-05 01:27:40', '2024-02-05 01:27:40'),
+(11, 'Student 1', '0155555', 'masum@gmail.com', 'Graphics Design', 1, 1, 6, '150.00', 'nagad', 'a2s1d32as1d32a1ds', '2024-02-05 04:03:17', '2024-02-05 04:03:17'),
+(12, 'Student 1', '0155555', 'abc@gmail.com', 'MS expert', 1, 1, 3, '140.00', 'nagad', 'asdasdasdas', '2024-02-05 04:29:48', '2024-02-05 00:06:50'),
+(13, 'Student 1', '0155555', 'admin@gmail.com', 'AI learning', 1, 1, 5, '140.00', 'nagad', 'a2s1d32as1d32a1ds', '2024-02-05 06:15:44', '2024-02-05 00:18:28');
 
 -- --------------------------------------------------------
 
@@ -353,7 +348,9 @@ INSERT INTO `reviews` (`id`, `name`, `occupation`, `description`, `student_id`, 
 (1, 'Best in the world', 'Web Developer', 'This is the review Description', 1, 1, 5, NULL, NULL),
 (2, 'Most Electrifying Course Ever', 'UI/UX Designer', 'This is the review Description', 1, 1, 4, NULL, NULL),
 (3, 'This is Phenominul', 'Student', 'This is the review Description', 2, 0, 3, NULL, NULL),
-(5, 'review from stu_1', 'new learner', 'asdsadasdasdasd', 1, 0, 1, '2024-02-03 01:53:09', '2024-02-03 02:36:13');
+(5, 'review from stu_1', 'new learner', 'asdsadasdasdasd', 1, 0, 1, '2024-02-03 01:53:09', '2024-02-03 02:36:13'),
+(6, 'nice one in the market', 'fast lerner', 'this is review description', 1, 1, 5, '2024-02-04 22:51:18', '2024-02-04 22:51:18'),
+(7, 'review form me', 'asasd', 'asdasdasdasdsa', 1, 1, 3, '2024-02-04 23:21:00', '2024-02-04 23:21:00');
 
 -- --------------------------------------------------------
 
@@ -379,7 +376,9 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `name`, `email`, `email_verified_at`, `password`, `product_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Student 1', 'stu1@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, NULL, '2024-02-03 01:48:14', '2024-02-03 01:48:14'),
-(2, 'Student 2', 'stu2@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, NULL, '2024-02-03 01:48:14', '2024-02-03 01:48:14');
+(2, 'Student 2', 'stu2@gmail.com', NULL, '$2y$12$C3P4CpcLQzeSP2tuwq4phu5WYwjETSDVtllx.wllL9.u0mRVJPMmi', NULL, NULL, '2024-02-03 01:48:14', '2024-02-03 01:48:14'),
+(3, 'new student', 'stu3@gmail.com', NULL, '$2y$12$IC/NrI03QePGrG4YacZ4GOQnlw5MEOJr7D8iABUzjrxx1/Dios42a', NULL, NULL, '2024-02-05 07:33:04', '2024-02-05 07:33:04'),
+(4, 'masum', 'masum@gmail.com', NULL, '$2y$12$Ms4fvzV4CJL7L6cxSDo72uHJ8zQ5IAIyBoO3ul8a48KatqOiZe29O', NULL, NULL, '2024-02-05 07:36:09', '2024-02-05 07:36:09');
 
 -- --------------------------------------------------------
 
@@ -563,7 +562,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -581,13 +580,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
