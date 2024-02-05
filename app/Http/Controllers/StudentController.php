@@ -18,7 +18,7 @@ class StudentController extends Controller
         // dd($request->all()) ;
         if(Auth::guard('student')->attempt(['email'=>$request->email,
         "password"=>$request->password])){
-            return redirect()->route('student.dashboard');
+            return redirect()->route('/');
         } else {
             return redirect()->route('student_login_form');
         }
@@ -47,6 +47,6 @@ class StudentController extends Controller
 
         // $request->session()->regenerateToken();
 
-        return redirect('student/login');
+        return redirect('/');
     }
 }

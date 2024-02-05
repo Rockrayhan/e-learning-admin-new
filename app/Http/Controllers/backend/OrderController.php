@@ -51,6 +51,9 @@ class OrderController extends Controller
             'product_name' => $request->product_name ,
             'student_id' => $request->student_id ,
             'product_id' => $request->product_id ,
+            'price' => $request->price ,
+            'payment' => $request->payment ,
+            't_id' => $request->t_id ,
         ] ;
         // dd($data);
 
