@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductDetailsController extends Controller
 {
@@ -13,9 +15,11 @@ class ProductDetailsController extends Controller
      */
     public function index($id)
     {
+        $student_id = Auth::guard('student')->user()->id;
+        $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
         $products = Product::find($id);
         $products->load('lesson');
-        return view('frontend.productDetails', compact('products'));
+        return view('frontend.productDetails', compact('products', 'ordered'));
     }
 
     /**

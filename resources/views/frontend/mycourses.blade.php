@@ -218,7 +218,7 @@
                                         <div class="course_price ml-auto">Price: <span>$35</span></div>
                                     </div>
                                     <div class="course_title">
-                                        <h3><a href="courses.html"> {{ $item['product_name'] }} </a></h3>
+                                        <h3><a href="/product/details/{{$item['product_id']}}"> {{ $item['product_name'] }} </a></h3>
                                     </div>
                                     <div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi
                                         tempor odio eget lacus tempus pulvinar.</div>

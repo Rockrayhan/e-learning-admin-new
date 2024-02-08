@@ -590,7 +590,7 @@
                                                 </div>
                                             </div>
                                             <div class="course_title">
-                                                <h3><a href="#">{{ $item['name'] }}</a>
+                                                <h3><a href="">{{ $item['name'] }}</a>
                                                 </h3>
                                             </div>
                                             <div class="course_text">{{ $item['description'] }}</div>

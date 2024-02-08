@@ -26,36 +26,36 @@
         <header class="header">
 
             <!-- Top Bar -->
-    <div class="top_bar">
-        <div class="top_bar_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                            <ul class="top_bar_contact_list">
-                                <li>
-                                    <div class="question">Have any questions?</div>
-                                </li>
-                                <li>
-                                    <div>(009) 35475 6688933 32</div>
-                                </li>
-                                <li>
-                                    <div>info@elaerntemplate.com</div>
-                                </li>
-                            </ul>
-                            <div class="top_bar_login ml-auto">
-                                <ul>
-                                    <li><a href="/student/dashboard">User</a></li>
-                                    <li><a href="/instructor/dashboard">Instructor</a></li>
-                                    <li><a href="/admin/dashboard">admin</a></li>
-                                </ul>
+            <div class="top_bar">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                    <ul class="top_bar_contact_list">
+                                        <li>
+                                            <div class="question">Have any questions?</div>
+                                        </li>
+                                        <li>
+                                            <div>(009) 35475 6688933 32</div>
+                                        </li>
+                                        <li>
+                                            <div>info@elaerntemplate.com</div>
+                                        </li>
+                                    </ul>
+                                    <div class="top_bar_login ml-auto">
+                                        <ul>
+                                            <li><a href="/student/dashboard">User</a></li>
+                                            <li><a href="/instructor/dashboard">Instructor</a></li>
+                                            <li><a href="/admin/dashboard">admin</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
             <!-- Header Content -->
             <div class="header_container">
@@ -92,7 +92,7 @@
                                             @endauth
                                         </h5>
                                     </ul>
-                                    
+
 
                                     <!-- Hamburger -->
 
@@ -216,21 +216,21 @@
                     <div class="col-lg-4 mt-5">
                         <div class="mt-5">
 
-							@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-									@foreach ($errors->all() as $error)
-										<li>{{ $error }}</li>
-									@endforeach
-								</ul>
-							</div>
-						@endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 
-						@if (session('msg'))
-							<div class="alert alert-success">
-								{{ session('msg') }}
-							</div>
-						@endif
+                            @if (session('msg'))
+                                <div class="alert alert-success">
+                                    {{ session('msg') }}
+                                </div>
+                            @endif
                             {{-- Lesson / Topic --}}
 
                             <div>
@@ -247,12 +247,17 @@
 
                             {{-- Enroll --}}
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
-                                data-target="#exampleModal">
-                                Enroll Now
-                            </button>
 
+                            @if ($ordered)
+
+                                <h3 class="mt-5">Already Enrollerd</h3>
+                            @else
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Enroll Now
+                                </button>
+                            @endif
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1"
@@ -312,26 +317,26 @@
                                                     <div class="form-group">
                                                         <label> Make Payment at: +880 168201 1307 </label> <br>
 
-                                                        <div class="d-flex"> 
-															<img
-                                                                src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA"
+                                                        <div class="d-flex">
+                                                            <img src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA"
                                                                 width="50%" height="80px" alt="">
 
                                                             <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg"
                                                                 width="50%" height="80px" alt="">
                                                         </div>
 
-														<div class="d-flex">
-															<input type="radio" name="payment" value="bkash"
-                                                            class="form-control">
-                                                        <input type="radio" name="payment" value="nagad"
-                                                            class="form-control">
-														</div>
+                                                        <div class="d-flex">
+                                                            <input type="radio" name="payment" value="bkash"
+                                                                class="form-control">
+                                                            <input type="radio" name="payment" value="nagad"
+                                                                class="form-control">
+                                                        </div>
 
-														<div>
-															<label for="product_name">Enter Your Transaction ID</label>
-															<input type="text" name="t_id" class="form-control">
-														</div>
+                                                        <div>
+                                                            <label for="product_name">Enter Your Transaction ID</label>
+                                                            <input type="text" name="t_id"
+                                                                class="form-control">
+                                                        </div>
 
                                                     </div>
 
