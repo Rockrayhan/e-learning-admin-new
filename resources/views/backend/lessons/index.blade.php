@@ -20,7 +20,7 @@
         <div class="mb-4">
             <label for="productNameFilter" class="text-sm font-medium text-gray-500 dark:text-gray-400">Filter by Course Name:</label>
             <select id="productNameFilter" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <option value="">All Topic</option>
+                <option value="">All Courses</option>
                 @foreach ($products as $product)
                     <option value="{{ $product->name }}">{{ $product->name }}</option>
                 @endforeach
