@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instructor;
 use App\Models\Lesson;
 use App\Models\Product;
 use App\Models\Review;
@@ -26,8 +27,9 @@ class LessonController extends Controller
      */
     public function create()
     {
+        $instructors = Instructor::all();
         $product = Product::all();
-        return view('backend.lessons.create', compact('product'));
+        return view('backend.lessons.create', compact('product' , 'instructors'));
     }
 
     /**
@@ -39,6 +41,8 @@ class LessonController extends Controller
             'name' => $request->name,
             'product_id' => $request->cats,
             'instructor_id' => $request->instructor_id,
+            'description' => $request->description,
+            'video' => $request->video,
 
         ];
 

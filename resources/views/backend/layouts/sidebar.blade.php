@@ -962,14 +962,14 @@
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              ALL Products
+              ALL Courses
             </a>
             <a
               href="/product/create"
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              Insert Product
+              Insert Course
             </a>
 
             <a
@@ -1041,7 +1041,7 @@
               role="menuitem"
               class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700"
             >
-              Insert Topic
+              Create Topic
             </a>
             <a
               href="/lesson/mylesson"

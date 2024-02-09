@@ -50,3 +50,6 @@ id     name     occupation    description       student_id     rating
 
 
  
+
+ ### product == courses
+ ### lessons == topic

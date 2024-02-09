@@ -41,4 +41,12 @@ class Product extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+
+
+    public function procourse(): BelongsTo
+    {
+        return $this->belongsTo(procourse::class);
+    }
+
 }

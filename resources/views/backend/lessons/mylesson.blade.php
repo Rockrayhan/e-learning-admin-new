@@ -19,26 +19,39 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    SL
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Topic name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Course Name
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Description
+                </th>
                
                 <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">Action</span>
+                    <span>Action</span>
                 </th>
             </tr>
         </thead>
         <tbody>
+            @php $sl = 1  @endphp
             @foreach ($lesson as $item)
                 
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$item['name']}}
+                    {{ $sl++ }}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$item['name']}}
+                </td>
+                <td scope="row" class="px-6 text-wrap py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$item->product->name}}
+                </td>
+                <td scope="row" class="px-6  py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$item['description']}}
                 </td>
                 <td class="px-6 py-4 text-right">
                     <a href="category/delete/{{$item['id']}}"> delete </a>

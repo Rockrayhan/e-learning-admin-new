@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Lesson extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'product_id', 'instructor_id'];
+    protected $fillable = ['name', 'product_id', 'instructor_id', 'description', 'video'];
 
 
     public function product(): BelongsTo  //product this will be needed 

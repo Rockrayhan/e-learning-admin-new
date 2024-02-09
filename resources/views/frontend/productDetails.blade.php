@@ -251,6 +251,77 @@
                             @if ($ordered)
 
                                 <h3 class="mt-5">Already Enrollerd</h3>
+                                {{-- accordion --}}
+                                {{-- <div>
+                                  
+                                    <div id="accordion">
+
+                                        <div class="card">
+                                          <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Course Title: {{ $products->procourse->title }}
+                                              </button>
+                                            </h5>
+                                          </div>
+                                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                {{ $products->procourse->description }}
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="card">
+                                          <div class="card-header" id="headingTwo">
+                                            <h5 class="mb-0">
+                                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Watch Video
+                                              </button>
+                                            </h5>
+                                          </div>
+                                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <iframe src="{{ $products->procourse->video }}" frameborder="0"></iframe>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="card">
+                                          <div class="card-header" id="headingThree">
+                                            <h5 class="mb-0">
+                                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Embeded
+                                              </button>
+                                            </h5>
+                                          </div>
+                                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <iframe width="300" height="300" src="https://www.youtube.com/embed/hKukexmKPgk?si=bQRisSizCdWh9_XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                </div> --}}
+
+                                <div>
+                                    <h2 class="my-5">Course Topics</h2>
+                                        @foreach ($products->lesson as $lesson)
+                                            <div>
+                                                <h4> Topic Name : {{$lesson->name}} </h4>
+                                                <p><b>Topic Description:</b> <br> {{$lesson->description}}</p>
+                                                <div>
+                                                    <iframe width="400" height="315" src="{{$lesson->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                                                  
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                </div>
+
+
+                                
+                                {{-- {{$products}} --}}
                             @else
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
