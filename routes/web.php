@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\InvoiceController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\HomeController;
@@ -128,6 +129,10 @@ Route::get('/student/mycourses', [StudentController::class, 'myCourses'])->name(
 
 // });
 
+
+// invoice 
+Route::get('invoice',[InvoiceController::class,'generate_pdf']);
+Route::get('invoice/{id}',[InvoiceController::class,'generate_pdf'])->name('invoiceperid');
 
 
 require __DIR__ . '/auth.php';

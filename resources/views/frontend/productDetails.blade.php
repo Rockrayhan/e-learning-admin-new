@@ -8,8 +8,7 @@
     <meta name="description" content="Elearn project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
-    <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
-        type="text/css">
+    <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('frontend/plugins/video-js/video-js.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news_responsive.css') }}">
@@ -250,78 +249,10 @@
 
                             @if ($ordered)
 
-                                <h3 class="mt-5">Already Enrollerd</h3>
-                                {{-- accordion --}}
-                                {{-- <div>
-                                  
-                                    <div id="accordion">
+                            <button type="button" class="btn btn-primary px-4 py-3 mt-5">
+                            Your Course Content are Below..
+                        </button>
 
-                                        <div class="card">
-                                          <div class="card-header" id="headingOne">
-                                            <h5 class="mb-0">
-                                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Course Title: {{ $products->procourse->title }}
-                                              </button>
-                                            </h5>
-                                          </div>
-                                          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                            <div class="card-body">
-                                                {{ $products->procourse->description }}
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="card">
-                                          <div class="card-header" id="headingTwo">
-                                            <h5 class="mb-0">
-                                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Watch Video
-                                              </button>
-                                            </h5>
-                                          </div>
-                                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <iframe src="{{ $products->procourse->video }}" frameborder="0"></iframe>
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="card">
-                                          <div class="card-header" id="headingThree">
-                                            <h5 class="mb-0">
-                                              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Embeded
-                                              </button>
-                                            </h5>
-                                          </div>
-                                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <iframe width="300" height="300" src="https://www.youtube.com/embed/hKukexmKPgk?si=bQRisSizCdWh9_XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                </div> --}}
-
-                                <div>
-                                    <h2 class="my-5">Course Topics</h2>
-                                        @foreach ($products->lesson as $lesson)
-                                            <div>
-                                                <h4> Topic Name : {{$lesson->name}} </h4>
-                                                <p><b>Topic Description:</b> <br> {{$lesson->description}}</p>
-                                                <div>
-                                                    <iframe width="400" height="315" src="{{$lesson->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                                                  
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                </div>
-
-
-                                
-                                {{-- {{$products}} --}}
                             @else
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
@@ -430,23 +361,33 @@
                 </div>
 
             {{--   pro content  --}}
-                <div>
-                    <div class="row">
-                        <div class="col-3">
-                          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-                           
-                          </div>
-                        </div>
-                        <div class="col-9">
-                          <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">home Content</div>
-                          </div>
-                        </div>
-                      </div>
 
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        @foreach ($products->lesson as $key => $lesson)
+                            <a class="nav-link {{$key == 0 ? 'active' : ''}}" id="v-pills-{{$key}}-tab" data-toggle="pill" href="#v-pills-{{$key}}" role="tab" aria-controls="v-pills-{{$key}}" aria-selected="{{$key == 0 ? 'true' : 'false'}}">{{$lesson->name}}</a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        @foreach ($products->lesson as $key => $lesson)
+                            <div class="tab-pane fade {{$key == 0 ? 'show active' : ''}}" id="v-pills-{{$key}}" role="tabpanel" aria-labelledby="v-pills-{{$key}}-tab">
+                                <p>{{$lesson->description}}</p>
+                                <div>
+                                    <iframe width="400" height="315" src="{{$lesson->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
+            
+
+
+
         </div>
 
         <!-- Footer -->
