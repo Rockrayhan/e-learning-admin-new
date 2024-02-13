@@ -58,6 +58,9 @@
                   Change Status
                 </th>
                 <th scope="col" class="px-6 py-3">
+                  Invoice
+                </th>
+                <th scope="col" class="px-6 py-3">
                 Action
                 </th>
             </tr>
@@ -115,6 +118,11 @@
                     </form>
                     
                 </td>   
+
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <a href="{{url('invoice/'. $item['id'] )}}"> Invoice </a>
+                </td>
+
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                      <a href="product/delete/{{$item['id']}}"> delete </a>
                     <a href="product/edit/{{$item['id']}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
