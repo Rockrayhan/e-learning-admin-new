@@ -18,7 +18,7 @@ class HomeController extends Controller
     {   $manufacturers = Manufacturer::all();
         $products = Product::all();
         $reviews = Review::where('status', 1)->get();
-        return view('frontend.home', compact('products', 'manufacturers', 'reviews',));
+        return view('frontend.home', compact('products', 'manufacturers', 'reviews'));
     }
     
 

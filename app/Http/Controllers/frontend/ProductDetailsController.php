@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,9 @@ class ProductDetailsController extends Controller
         $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
         $products = Product::find($id);
         $products->load('lesson');
-        return view('frontend.productDetails', compact('products', 'ordered'));
+        $quiz = Quiz::all();
+        $quiz = $products->quiz;
+        return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
     }
 
     /**

@@ -8,7 +8,8 @@
     <meta name="description" content="Elearn project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
-    <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('frontend/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet"
+        type="text/css">
     <link href="{{ asset('frontend/plugins/video-js/video-js.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/news_responsive.css') }}">
@@ -248,11 +249,9 @@
 
 
                             @if ($ordered)
-
-                            <button type="button" class="btn btn-primary px-4 py-3 mt-5">
-                            Your Course Content are Below..
-                        </button>
-
+                                <button type="button" class="btn btn-primary px-4 py-3 mt-5">
+                                    Your Course Content are Below..
+                                </button>
                             @else
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
@@ -360,137 +359,205 @@
                     </div>
                 </div>
 
-            {{--   pro content  --}}
+                {{--   pro content  --}}
 
 
-            <div class="row">
-                <div class="col-3">
-                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        @foreach ($products->lesson as $key => $lesson)
-                            <a class="nav-link {{$key == 0 ? 'active' : ''}}" id="v-pills-{{$key}}-tab" data-toggle="pill" href="#v-pills-{{$key}}" role="tab" aria-controls="v-pills-{{$key}}" aria-selected="{{$key == 0 ? 'true' : 'false'}}">{{$lesson->name}}</a>
-                        @endforeach
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                            @foreach ($products->lesson as $key => $lesson)
+                                <a class="nav-link {{ $key == 0 ? 'active' : '' }}"
+                                    id="v-pills-{{ $key }}-tab" data-toggle="pill"
+                                    href="#v-pills-{{ $key }}" role="tab"
+                                    aria-controls="v-pills-{{ $key }}"
+                                    aria-selected="{{ $key == 0 ? 'true' : 'false' }}">{{ $lesson->name }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            @foreach ($products->lesson as $key => $lesson)
+                                <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
+                                    id="v-pills-{{ $key }}" role="tabpanel"
+                                    aria-labelledby="v-pills-{{ $key }}-tab">
+                                    <p>{{ $lesson->description }}</p>
+                                    <div>
+                                        <iframe width="400" height="315" src="{{ $lesson->video }}"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-                <div class="col-9">
-                    <div class="tab-content" id="v-pills-tabContent">
-                        @foreach ($products->lesson as $key => $lesson)
-                            <div class="tab-pane fade {{$key == 0 ? 'show active' : ''}}" id="v-pills-{{$key}}" role="tabpanel" aria-labelledby="v-pills-{{$key}}-tab">
-                                <p>{{$lesson->description}}</p>
+
+
+                <div class="row my-5 container">
+                    <h1>Take a Quiz</h1>
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('quiz.submit') }}">
+                        @csrf
+                        @php $questionNumber = 1; @endphp
+                        @foreach ($quiz as $item)
+                            <div class="col-lg-12">
                                 <div>
-                                    <iframe width="400" height="315" src="{{$lesson->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <h3>Question {{ $questionNumber }}: {{ $item['question'] }}</h3>
+
+                                    <input name="student_id" type="hidden"
+                                        value="{{ Auth::guard('student')->user()->id }}">
+
+                                    <label>{{ $item['option1'] }}</label>
+                                    <input type="radio" name="answers[{{ $questionNumber }}]" value="option1">
+                                    <br>
+
+                                    <label>{{ $item['option2'] }}</label>
+                                    <input type="radio" name="answers[{{ $questionNumber }}]" value="option2">
+                                    <br>
+
+                                    <label>{{ $item['option3'] }}</label>
+                                    <input type="radio" name="answers[{{ $questionNumber }}]" value="option3">
+                                    <br>
+
+                                    <label>{{ $item['option4'] }}</label>
+                                    <input type="radio" name="answers[{{ $questionNumber }}]" value="option4">
+
                                 </div>
                             </div>
+                            @php $questionNumber++; @endphp
                         @endforeach
-                    </div>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
-            
 
 
 
-        </div>
+            <!-- Footer -->
 
-        <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-
-                    <!-- About -->
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_about">
-                            <div class="logo_container">
-                                <a href="#">
-                                    <div class="logo_content d-flex flex-row align-items-end justify-content-start">
-                                        <div class="logo_img"><img src="images/logo.png" alt=""></div>
-                                        <div class="logo_text">learn</div>
-                                    </div>
-                                </a>
+                        <!-- About -->
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_about">
+                                <div class="logo_container">
+                                    <a href="#">
+                                        <div
+                                            class="logo_content d-flex flex-row align-items-end justify-content-start">
+                                            <div class="logo_img"><img src="images/logo.png" alt=""></div>
+                                            <div class="logo_text">learn</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="footer_about_text">
+                                    <p>Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus
+                                        pulvinar.</p>
+                                </div>
+                                <div class="footer_social">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-google-plus"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="copyright">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>
+                                        document.write(new Date().getFullYear());
+                                    </script> All rights reserved | This template is made with <i
+                                        class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
                             </div>
-                            <div class="footer_about_text">
-                                <p>Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus
-                                    pulvinar.</p>
-                            </div>
-                            <div class="footer_social">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        </div>
+
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_links">
+                                <div class="footer_title">Quick menu</div>
+                                <ul class="footer_list">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="#">Facts</a></li>
                                 </ul>
                             </div>
-                            <div class="copyright">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i
-                                    class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                    target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_links">
+                                <div class="footer_title">Useful Links</div>
+                                <ul class="footer_list">
+                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="#">Events</a></li>
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="#">Teachers</a></li>
+                                    <li><a href="#">Links</a></li>
+                                    <li><a href="#">FAQ</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_links">
-                            <div class="footer_title">Quick menu</div>
-                            <ul class="footer_list">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="#">Facts</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_links">
-                            <div class="footer_title">Useful Links</div>
-                            <ul class="footer_list">
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="#">Events</a></li>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">Links</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_contact">
-                            <div class="footer_title">Contact Us</div>
-                            <div class="footer_contact_info">
-                                <div class="footer_contact_item">
-                                    <div class="footer_contact_title">Address:</div>
-                                    <div class="footer_contact_line">1481 Creekside Lane Avila Beach, CA 93424</div>
-                                </div>
-                                <div class="footer_contact_item">
-                                    <div class="footer_contact_title">Phone:</div>
-                                    <div class="footer_contact_line">+53 345 7953 32453</div>
-                                </div>
-                                <div class="footer_contact_item">
-                                    <div class="footer_contact_title">Email:</div>
-                                    <div class="footer_contact_line">yourmail@gmail.com</div>
+                        <div class="col-lg-3 footer_col">
+                            <div class="footer_contact">
+                                <div class="footer_title">Contact Us</div>
+                                <div class="footer_contact_info">
+                                    <div class="footer_contact_item">
+                                        <div class="footer_contact_title">Address:</div>
+                                        <div class="footer_contact_line">1481 Creekside Lane Avila Beach, CA 93424
+                                        </div>
+                                    </div>
+                                    <div class="footer_contact_item">
+                                        <div class="footer_contact_title">Phone:</div>
+                                        <div class="footer_contact_line">+53 345 7953 32453</div>
+                                    </div>
+                                    <div class="footer_contact_item">
+                                        <div class="footer_contact_title">Email:</div>
+                                        <div class="footer_contact_line">yourmail@gmail.com</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
 
-    <script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
-    <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
-    <script src="{{ asset('frontend/plugins/parallax-js-master/parallax.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/news.js') }}"></script>
+        <script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
+        <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
+        <script src="{{ asset('frontend/plugins/parallax-js-master/parallax.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/news.js') }}"></script>
 </body>
 
 </html>

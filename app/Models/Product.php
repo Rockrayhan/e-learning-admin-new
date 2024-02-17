@@ -49,4 +49,10 @@ class Product extends Model
         return $this->belongsTo(procourse::class);
     }
 
+
+    public function quiz(): HasMany
+    {
+        return $this->hasMany(Quiz::class);
+    }
+
 }

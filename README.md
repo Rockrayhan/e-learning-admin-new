@@ -43,7 +43,16 @@ id  Student_name  email   phone      product_name    product_id      student_id 
 id     name     occupation    description       student_id     rating
 
 
-7. 
+11. Quiz
+id      product_id      Question       option1      option2     option3     option4     marks  
+
+
+12. Quiz Answer
+id      student_id       question_number     selected_option 
+
+
+
+
 
  7. Cart Items
  8. Discount

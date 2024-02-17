@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\InvoiceController;
 use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\QuizController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductDetailsController;
@@ -133,6 +134,19 @@ Route::get('/student/mycourses', [StudentController::class, 'myCourses'])->name(
 // invoice 
 Route::get('invoice',[InvoiceController::class,'generate_pdf']);
 Route::get('invoice/{id}',[InvoiceController::class,'generate_pdf'])->name('invoiceperid');
+
+
+
+
+// quiz 
+Route::get('quiz', [QuizController::class, 'index'])->name('quiz');
+Route::get('quiz/create', [QuizController::class, 'create'])->name('quiz.create');
+Route::post('quiz/store', [QuizController::class, 'store'])->name('quiz.store');
+Route::post('/submit-quiz', [QuizController::class, 'submitQuiz'])->name('quiz.submit');
+// Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+// Route::post('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+// Route::get('product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
 
 
 require __DIR__ . '/auth.php';

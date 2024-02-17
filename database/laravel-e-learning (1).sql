@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2024 at 03:04 PM
+-- Generation Time: Feb 17, 2024 at 02:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -227,7 +227,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2024_02_01_134052_create_lessons_table', 11),
 (33, '2024_02_02_042518_create_reviews_table', 12),
 (34, '2024_02_03_012107_create_students_table', 13),
-(35, '2024_02_09_051415_create_procourses_table', 14);
+(35, '2024_02_09_051415_create_procourses_table', 14),
+(36, '2024_02_14_160736_create_quizes_table', 15),
+(37, '2024_02_16_111935_create_quizanswers_table', 16);
 
 -- --------------------------------------------------------
 
@@ -352,6 +354,66 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `ma
 (6, 'Graphics Design', 'This is product description', 150.00, 7, 3, 'images/no_photo.jpg', 2, 2, 1, 0, '2024-02-01 11:47:26', '2024-02-01 11:47:26'),
 (7, 'Facebook Marketing', 'This is product description', 140.00, 7, 3, 'images/no_photo.jpg', 2, 2, 1, 0, '2024-02-01 11:47:26', '2024-02-01 11:47:26'),
 (8, 'Digital Marketing', 'This is product description', 150.00, 7, 3, 'images/no_photo.jpg', 2, 2, 1, 0, '2024-02-01 11:47:26', '2024-02-01 11:47:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizanswers`
+--
+
+CREATE TABLE `quizanswers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` tinyint(4) NOT NULL,
+  `question_number` varchar(50) NOT NULL,
+  `selected_option` varchar(50) NOT NULL,
+  `is_correct` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quizanswers`
+--
+
+INSERT INTO `quizanswers` (`id`, `student_id`, `question_number`, `selected_option`, `is_correct`, `created_at`, `updated_at`) VALUES
+(1, 1, '1', 'option4', 0, '2024-02-16 07:52:10', '2024-02-16 07:52:10'),
+(2, 1, '2', 'option2', 0, '2024-02-16 07:52:11', '2024-02-16 07:52:11'),
+(3, 1, '1', 'option4', NULL, '2024-02-16 08:41:36', '2024-02-16 08:41:36'),
+(4, 1, '2', 'option3', NULL, '2024-02-16 08:41:36', '2024-02-16 08:41:36'),
+(5, 1, '1', 'option4', NULL, '2024-02-16 08:42:10', '2024-02-16 08:42:10'),
+(6, 1, '2', 'option3', NULL, '2024-02-16 08:42:10', '2024-02-16 08:42:10'),
+(7, 1, '1', 'option4', 0, '2024-02-16 08:45:18', '2024-02-16 08:45:18'),
+(8, 1, '2', 'option3', 0, '2024-02-16 08:45:18', '2024-02-16 08:45:18'),
+(9, 1, '1', 'option3', 0, '2024-02-16 19:49:00', '2024-02-16 19:49:00'),
+(10, 1, '2', 'option2', 0, '2024-02-16 19:49:00', '2024-02-16 19:49:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quizes`
+--
+
+CREATE TABLE `quizes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(100) NOT NULL,
+  `option1` varchar(50) NOT NULL,
+  `option2` varchar(50) NOT NULL,
+  `option3` varchar(50) NOT NULL,
+  `option4` varchar(50) NOT NULL,
+  `correct_answer` varchar(50) NOT NULL,
+  `marks` tinyint(4) NOT NULL,
+  `product_id` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quizes`
+--
+
+INSERT INTO `quizes` (`id`, `question`, `option1`, `option2`, `option3`, `option4`, `correct_answer`, `marks`, `product_id`, `created_at`, `updated_at`) VALUES
+(3, 'what is Lenux', 'yes', 'no', 'very good', 'idk', 'option4', 2, 2, '2024-02-16 13:09:40', '2024-02-16 13:09:40'),
+(4, 'how are you ?', 'me', 'you', 'us', 'we', 'option3', 2, 2, '2024-02-16 13:14:52', '2024-02-16 13:14:52');
 
 -- --------------------------------------------------------
 
@@ -524,6 +586,18 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `quizanswers`
+--
+ALTER TABLE `quizanswers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quizes`
+--
+ALTER TABLE `quizes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
@@ -593,7 +667,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -618,6 +692,18 @@ ALTER TABLE `procourses`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `quizanswers`
+--
+ALTER TABLE `quizanswers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `quizes`
+--
+ALTER TABLE `quizes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reviews`
