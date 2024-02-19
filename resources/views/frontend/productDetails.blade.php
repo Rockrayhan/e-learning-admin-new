@@ -74,28 +74,47 @@
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav d-flex">
                                         <li><a href="/">home</a></li>
-                                        <li><a href="about.html">about us</a></li>
-                                        <li><a href="courses.html">courses</a></li>
-                                        <li class="active"><a href="news.html">news</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                        <h5 class="text-danger font-weight-bold d-flex">
-                                            @auth('student')
-                                                {{ Auth::guard('student')->user()->name }}
-                                                <form method="POST" action="{{ route('student.logout') }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">
-                                                        Logout
-                                                    </button>
-                                                </form>
-                                            @else
-                                                <a href="/student/login"> Log In </a>
-                                            @endauth
-                                        </h5>
+                                        <li><a href="/all-courses">All Courses</a></li>
+                                        <li><a href="/student/mycourses">My courses</a></li>
+                                        <li><a href="/review/myreview">Review</a></li>
+                                        <li><a href="/student/myorders">My Orders</a></li>
+                                        <li class="ml-auto">
+                                            <a href="#" class="btn btn-primary">
+                                                <i class="fa fa-shopping-cart"></i> Cart
+                                                @php $cartItems = session('cart') ?? []; @endphp
+                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                            </a>
+                                        </li>
+        
+                                        <!-- Student Name -->
+                                        {{-- <h4 class="text-danger font-weight-bold">
+                                            {{ Auth::guard('student')->check() ? 
+                                            Auth::guard('student')->user()->name 
+                                            : 
+                                            '' 
+                                            }}
+                                        </h4> --}}
+        
+                                        <!-- Student Name -->
+        <h5 class="text-danger font-weight-bold d-flex">
+            @auth('student')
+                {{ Auth::guard('student')->user()->name }}
+                <form method="POST" action="{{ route('student.logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">
+                        Logout
+                    </button>
+                </form>
+            @else
+                <a href="/student/login"> Log In </a>
+            @endauth
+        </h5>
+        
+                                        
                                     </ul>
-
-
+        
                                     <!-- Hamburger -->
-
+        
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
@@ -362,12 +381,12 @@
                 {{--   pro content  --}}
 
 
-                <div class="row">
-                    <div class="col-3">
+                <div class="row" style="margin-top: 60px; margin-bottom: 60px">
+                    <div class="col-3 border border-success p-4">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
                             @foreach ($products->lesson as $key => $lesson)
-                                <a class="nav-link {{ $key == 0 ? 'active' : '' }}"
+                                <a class="nav-link border border-info {{ $key == 0 ? 'active' : '' }}"
                                     id="v-pills-{{ $key }}-tab" data-toggle="pill"
                                     href="#v-pills-{{ $key }}" role="tab"
                                     aria-controls="v-pills-{{ $key }}"
@@ -376,7 +395,7 @@
                         </div>
                     </div>
                     <div class="col-9">
-                        <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-content border border-info p-4" id="v-pills-tabContent">
                             @foreach ($products->lesson as $key => $lesson)
                                 <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
                                     id="v-pills-{{ $key }}" role="tabpanel"
@@ -395,7 +414,9 @@
                 </div>
 
 
-                <div class="row my-5 container">
+                {{--===== quiz =====--}}
+
+                {{-- <div class="row my-5 container">
                     <h1>Take a Quiz</h1>
 
                     @if (session('success'))
@@ -440,13 +461,19 @@
                                     <label>{{ $item['option4'] }}</label>
                                     <input type="radio" name="answers[{{ $questionNumber }}]" value="option4">
 
+
+                                    
+                               
+
+                                    
+
                                 </div>
                             </div>
                             @php $questionNumber++; @endphp
                         @endforeach
                         <button type="submit">Submit</button>
                     </form>
-                </div>
+                </div> --}}
             </div>
 
 

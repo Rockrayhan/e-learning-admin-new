@@ -49,24 +49,12 @@ Route::get('/contact', function () {
 
 //frontend Orders
 Route::get('orders', [OrderController::class, 'index']);
-
-Route::get('orders/create', [OrderController::class, 'create'])
-    ->name('orders');
-
-Route::post('orders/store', [OrderController::class, 'store'])
-    ->name('orders.store');
-
-Route::get('orders/edit/{id}', [OrderController::class, 'edit'])
-    ->name('orders.edit');
-
-Route::post('orders/update/{id}', [OrderController::class, 'update'])
-    ->name('orders.update');
-
-Route::get('orders/delete/{id}', [OrderController::class, 'destroy'])
-    ->name('orders.delete');
-
-    Route::post('order/status/{id}', [OrderController::class, 'status']) 
-->name('order.status');  
+Route::get('orders/create', [OrderController::class, 'create'])->name('orders');
+Route::post('orders/store', [OrderController::class, 'store'])->name('orders.store');
+Route::get('orders/edit/{id}', [OrderController::class, 'edit'])->name('orders.edit');
+Route::post('orders/update/{id}', [OrderController::class, 'update'])->name('orders.update');
+Route::get('orders/delete/{id}', [OrderController::class, 'destroy'])->name('orders.delete');
+Route::post('order/status/{id}', [OrderController::class, 'status'])->name('order.status');  
 
 
 
@@ -82,7 +70,7 @@ Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('r
 
 // frontend controllers
 Route::get('/', [HomeController::class, 'index']);
-
+Route::get('/all-courses', [HomeController::class, 'allcourses']);
 Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details')->middleware('student');
 ;
 

@@ -58,6 +58,7 @@ public function submitQuiz(Request $request)
         'answers.*' => 'required|in:option1,option2,option3,option4', // Validate each answer option
     ]);
 
+ 
     // Process each submitted answer and store it in the database
     foreach ($request->answers as $questionNumber => $selectedOption) {
         QuizAnswer::create([

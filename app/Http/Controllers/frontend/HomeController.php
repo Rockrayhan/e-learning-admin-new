@@ -22,6 +22,13 @@ class HomeController extends Controller
     }
     
 
+    public function allcourses()
+    {  
+        $products = Product::all();
+        return view('frontend.AllCourses', compact('products'));
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      */

@@ -51,7 +51,7 @@
                         <nav class="main_nav_contaner ml-auto">
                             <ul class="main_nav d-flex">
                                 <li><a href="/">home</a></li>
-                                <li><a href="about.html">about us</a></li>
+                                <li><a href="/all-courses">All Courses</a></li>
                                 <li><a href="/student/mycourses">My courses</a></li>
                                 <li><a href="/review/myreview">Review</a></li>
                                 <li><a href="/student/myorders">My Orders</a></li>

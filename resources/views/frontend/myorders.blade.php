@@ -23,37 +23,37 @@
 
         <header class="header">
 
-           <!-- Top Bar -->
-    <div class="top_bar">
-        <div class="top_bar_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                            <ul class="top_bar_contact_list">
-                                <li>
-                                    <div class="question">Have any questions?</div>
-                                </li>
-                                <li>
-                                    <div>(009) 35475 6688933 32</div>
-                                </li>
-                                <li>
-                                    <div>info@elaerntemplate.com</div>
-                                </li>
-                            </ul>
-                            <div class="top_bar_login ml-auto">
-                                <ul>
-                                    <li><a href="/student/dashboard">User</a></li>
-                                    <li><a href="/instructor/dashboard">Instructor</a></li>
-                                    <li><a href="/admin/dashboard">admin</a></li>
-                                </ul>
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                    <ul class="top_bar_contact_list">
+                                        <li>
+                                            <div class="question">Have any questions?</div>
+                                        </li>
+                                        <li>
+                                            <div>(009) 35475 6688933 32</div>
+                                        </li>
+                                        <li>
+                                            <div>info@elaerntemplate.com</div>
+                                        </li>
+                                    </ul>
+                                    <div class="top_bar_login ml-auto">
+                                        <ul>
+                                            <li><a href="/student/dashboard">User</a></li>
+                                            <li><a href="/instructor/dashboard">Instructor</a></li>
+                                            <li><a href="/admin/dashboard">admin</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
             <!-- Header Content -->
             <div class="header_container">
@@ -72,10 +72,10 @@
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav d-flex">
                                         <li><a href="/">home</a></li>
-                                        <li><a href="about.html">about us</a></li>
+                                        <li><a href="/all-courses">All Courses</a></li>
                                         <li><a href="/student/mycourses">My courses</a></li>
                                         <li><a href="/review/myreview">Review</a></li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="/student/myorders">My Orders</a></li>
                                         <li class="ml-auto">
                                             <a href="#" class="btn btn-primary">
                                                 <i class="fa fa-shopping-cart"></i> Cart
@@ -86,12 +86,12 @@
 
                                         <!-- Student Name -->
                                         {{-- <h4 class="text-danger font-weight-bold">
-                                        {{ Auth::guard('student')->check() ? 
-                                        Auth::guard('student')->user()->name 
-                                        : 
-                                        '' 
-                                        }}
-                                    </h4> --}}
+                                            {{ Auth::guard('student')->check() ? 
+                                            Auth::guard('student')->user()->name 
+                                            : 
+                                            '' 
+                                            }}
+                                        </h4> --}}
 
                                         <!-- Student Name -->
                                         <h5 class="text-danger font-weight-bold d-flex">
@@ -194,50 +194,49 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="section_title text-center">
-                            @if(count($orders) == 0)
-                            <h2>No Courses are available for you</h2>
-                        @else
-                            <h2>Choose your course</h2>
-                        @endif
+                            @if (count($orders) == 0)
+                                <h2>No Courses are available for you</h2>
+                            @else
+                                <h2>Choose your course</h2>
+                            @endif
                         </div>
                     </div>
                 </div>
 
 
-                {{--====== orders table ========--}}
+                {{-- ====== orders table ======== --}}
 
                 <div>
                     <table class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Course Name</th>
-                            <th scope="col">Purchase Date</th>
-                            <th scope="col">Payment Method</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Transaction ID</th>
-                            <th scope="col">Invoice</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Purchase Date</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Transaction ID</th>
+                                <th scope="col">Invoice</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @php $sl = 1  @endphp
                             @foreach ($orders as $item)
-                                
-                            <tr>
-                                <th> {{$sl++}} </th>
-                                <td> {{$item['product_name']}} </td>
-                                <td>{{$item['created_at']}}</td>
-                                <td>{{$item['payment']}}</td>
-                                <td>{{$item['price']}}</td>
-                                <td>{{$item['t_id']}}</td>
-                                <td><a href="{{url('invoice/'. $item['id'] )}}"> Invoice </a></td>
-                                
-                            </tr>
+                                <tr>
+                                    <th> {{ $sl++ }} </th>
+                                    <td> {{ $item['product_name'] }} </td>
+                                    <td>{{ $item['created_at'] }}</td>
+                                    <td>{{ $item['payment'] }}</td>
+                                    <td>{{ $item['price'] }}</td>
+                                    <td>{{ $item['t_id'] }}</td>
+                                    <td><a href="{{ url('invoice/' . $item['id']) }}"> Invoice </a></td>
+
+                                </tr>
                             @endforeach
-                         
-                       
+
+
                         </tbody>
-                      </table>
+                    </table>
                 </div>
 
             </div>
