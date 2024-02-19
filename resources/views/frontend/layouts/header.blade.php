@@ -54,7 +54,7 @@
                                 <li><a href="about.html">about us</a></li>
                                 <li><a href="/student/mycourses">My courses</a></li>
                                 <li><a href="/review/myreview">Review</a></li>
-                                <li><a href="contact.html">contact</a></li>
+                                <li><a href="/student/myorders">My Orders</a></li>
                                 <li class="ml-auto">
                                     <a href="#" class="btn btn-primary">
                                         <i class="fa fa-shopping-cart"></i> Cart

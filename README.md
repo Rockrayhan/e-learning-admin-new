@@ -51,7 +51,8 @@ id      product_id      Question       option1      option2     option3     opti
 id      student_id       question_number     selected_option 
 
 
-
+13. message
+id      student_id      instructor_id       msg
 
 
  7. Cart Items

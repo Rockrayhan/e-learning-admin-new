@@ -8,21 +8,25 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 
-
 class InvoiceController extends Controller
 {
     public function generate_pdf($id)
     {        
-        $orders = Order::all()->where('id', $id);
-        // $data = [
-        //     'title' => "Invoice of PESTKIT",
-        //     'date' => date('m/d/Y'),
-        //     'orders' => $orders
-        // ];
-
-        // dd($orders);
+        $pendingOrder = Order::where('id', $id)->where('status', 0)->first();
+        if ($pendingOrder) {
+            return redirect()->back()->with('pendingMsg' , 'This Order is still pending, Not Confirmed Yet...!!') ;
+        } 
+        
+        $orders = Order::where('id', $id)->where('status', 1)->get();
+        if ($orders->isEmpty()) {
+            return redirect()->back()->with('errorMsg' , 'No confirmed orders found for this ID');
+        }
 
         $pdf = Pdf::loadView('frontend.invoice', compact('orders'));
         return $pdf->stream('invoice');
     }
+
+
+    
 }
+

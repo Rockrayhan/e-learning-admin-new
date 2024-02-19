@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2024 at 02:52 AM
+-- Generation Time: Feb 19, 2024 at 02:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -195,6 +195,28 @@ INSERT INTO `manufacturers` (`id`, `name`, `country`, `created_at`, `updated_at`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` tinyint(4) NOT NULL,
+  `instructor_id` tinyint(4) NOT NULL,
+  `msg` varchar(512) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `student_id`, `instructor_id`, `msg`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '213213asdasd', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -229,7 +251,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (34, '2024_02_03_012107_create_students_table', 13),
 (35, '2024_02_09_051415_create_procourses_table', 14),
 (36, '2024_02_14_160736_create_quizes_table', 15),
-(37, '2024_02_16_111935_create_quizanswers_table', 16);
+(37, '2024_02_16_111935_create_quizanswers_table', 16),
+(38, '2024_02_19_005241_create_messages_table', 17);
 
 -- --------------------------------------------------------
 
@@ -261,7 +284,7 @@ INSERT INTO `orders` (`id`, `student_name`, `phone`, `email`, `product_name`, `s
 (9, 'Student 2', '0155555', 'stu2@gmail.com', 'Prompt Engineering', 1, 2, 4, '', '', '', '2024-02-04 17:03:15', '2024-02-04 17:03:15'),
 (10, 'Student 1', '0155555', 'abc@gmail.com', 'Data Analysis', 1, 1, 1, '120.00', 'nagad', '', '2024-02-05 01:27:40', '2024-02-05 01:27:40'),
 (11, 'Student 1', '0155555', 'masum@gmail.com', 'Graphics Design', 1, 1, 6, '150.00', 'nagad', 'a2s1d32as1d32a1ds', '2024-02-05 04:03:17', '2024-02-05 04:03:17'),
-(12, 'Student 1', '0155555', 'abc@gmail.com', 'MS expert', 1, 1, 3, '140.00', 'nagad', 'asdasdasdas', '2024-02-05 04:29:48', '2024-02-05 00:06:50'),
+(12, 'Student 1', '0155555', 'abc@gmail.com', 'MS expert', 0, 1, 3, '140.00', 'nagad', 'asdasdasdas', '2024-02-05 04:29:48', '2024-02-18 07:39:41'),
 (13, 'Student 1', '0155555', 'admin@gmail.com', 'AI learning', 0, 1, 5, '140.00', 'nagad', 'a2s1d32as1d32a1ds', '2024-02-05 06:15:44', '2024-02-05 10:14:59'),
 (14, 'Student 1', '0155555', 'abc@gmail.com', 'Linux Basic To Advance', 1, 1, 2, '130.00', 'bkash', '3asd213asd', '2024-02-09 13:20:49', '2024-02-09 07:21:47');
 
@@ -548,6 +571,12 @@ ALTER TABLE `manufacturers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -664,10 +693,16 @@ ALTER TABLE `manufacturers`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `orders`

@@ -67,6 +67,17 @@ class StudentController extends Controller
     }
 
 
+    public function myorders()
+    {
+        $student_id = Auth::guard('student')->user()->id;
+        // $product = Order::where('student_id', $student_id)->get();
+        $orders = Order::where('student_id', $student_id)
+        ->where('status', 1)
+        ->get();
+        return view('frontend.myorders', compact('orders'));
+    }
+
+
     public function dashboard(){
         return view('backend.student.dashboard');
     }

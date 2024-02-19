@@ -33,6 +33,13 @@ class Student extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
+
+    public function message(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

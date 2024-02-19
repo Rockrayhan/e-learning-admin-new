@@ -43,6 +43,14 @@ class Instructor extends Authenticatable
         return $this->belongsTo(Product::class);
     }
 
+
+    public function message(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
+
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

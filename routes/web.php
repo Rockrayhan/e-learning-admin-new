@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\InvoiceController;
+use App\Http\Controllers\backend\MessageController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\QuizController;
 use App\Http\Controllers\frontend\ProductController;
@@ -125,6 +126,7 @@ Route::post('login/student', [StudentController::class, 'login'])->name('student
 Route::post('student/logout', [StudentController::class, 'destroy'])->name('student.logout');
 Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard')->middleware('student');
 Route::get('/student/mycourses', [StudentController::class, 'myCourses'])->name('student.mycourses');
+Route::get('/student/myorders', [StudentController::class, 'myorders'])->name('student.myorders')->middleware('student');;
 
 
 
@@ -138,6 +140,19 @@ Route::get('invoice/{id}',[InvoiceController::class,'generate_pdf'])->name('invo
 
 
 
+
+
+
+// messages
+Route::get('/msg', [MessageController::class, 'index'])->name('msg');
+Route::get('/msg/create', [MessageController::class, 'create'])->name('msg.create');
+Route::post('msg/store', [MessageController::class, 'store'])->name('msg.store');
+
+
+
+
+
+
 // quiz 
 Route::get('quiz', [QuizController::class, 'index'])->name('quiz');
 Route::get('quiz/create', [QuizController::class, 'create'])->name('quiz.create');
@@ -146,6 +161,7 @@ Route::post('/submit-quiz', [QuizController::class, 'submitQuiz'])->name('quiz.s
 // Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
 // Route::post('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 // Route::get('product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
 
 
 

@@ -18,6 +18,14 @@
         </div>
     </div>
 @endif
+@if (session('pendingMsg'))
+    <div class="">
+        <div class="p-4 text-white bg-red-500 rounded-lg shadow-md">
+            {{ session('pendingMsg') }}
+        </div>
+    </div>
+@endif
+
 
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
