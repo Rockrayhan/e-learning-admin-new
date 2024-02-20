@@ -71,19 +71,37 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav d-flex">
-                                        <li><a href="/">home</a></li>
-                                        <li><a href="/all-courses">All Courses</a></li>
-                                        <li><a href="/student/mycourses">My courses</a></li>
-                                        <li><a href="/review/myreview">Review</a></li>
-                                        <li><a href="/student/myorders">My Orders</a></li>
-                                        <li class="ml-auto">
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fa fa-shopping-cart"></i> Cart
-                                                @php $cartItems = session('cart') ?? []; @endphp
-                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
-                                            </a>
-                                        </li>
-
+                                        <!-- Student  -->
+                                        <h5 class="text-danger font-weight-bold d-flex">
+                                            @auth('student')
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/mycourses">My courses</a></li>
+                                            <li><a href="/review/myreview">Review</a></li>
+                                            <li><a href="/student/myorders">My Orders</a></li>
+        
+                                            <li class="ml-auto">
+                                                <a href="/cart" class="btn btn-primary">
+                                                    <i class="fa fa-shopping-cart"></i> Cart
+                                                    @php $cartItems = session('cart') ?? []; @endphp
+                                                    <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="my-auto"> <span>{{ Auth::guard('student')->user()->name }}</span> </li>
+                                                <form method="POST" action="{{ route('student.logout') }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">
+                                                        Logout
+                                                    </button>
+                                                </form>
+                                            @else
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/login"> Log In </a></li>
+                                            @endauth
+                                        </h5>
+        
                                         <!-- Student Name -->
                                         {{-- <h4 class="text-danger font-weight-bold">
                                             {{ Auth::guard('student')->check() ? 
@@ -92,27 +110,11 @@
                                             '' 
                                             }}
                                         </h4> --}}
-
-                                        <!-- Student Name -->
-                                        <h5 class="text-danger font-weight-bold d-flex">
-                                            @auth('student')
-                                                {{ Auth::guard('student')->user()->name }}
-                                                <form method="POST" action="{{ route('student.logout') }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">
-                                                        Logout
-                                                    </button>
-                                                </form>
-                                            @else
-                                                <a href="/student/login"> Log In </a>
-                                            @endauth
-                                        </h5>
-
-
+        
                                     </ul>
-
+        
                                     <!-- Hamburger -->
-
+        
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>

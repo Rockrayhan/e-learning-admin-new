@@ -2,8 +2,8 @@
 
 @section('content')
 
-<main id="main" class="main" style="margin-top: 400px">
-    <section>
+<main id="main" class="main" style="margin-top:200px">
+    <section class="container">
         <div class="row">
             <div class="col-lg-12">
                 <table id="cart" class="table table-hover table-condensed">
@@ -54,7 +54,7 @@
                         <tr>
                             <td colspan="5" class="text-right">
                                 <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                                <button class="btn btn-success">Checkout</button>
+                                <button onclick="checkout()" class="btn btn-success">Checkout</button>
                             </td>
                         </tr>
                     </tfoot>
@@ -108,6 +108,10 @@
             });
         }
     });
+
+function checkout() {
+    alert('Checkout will be available soon')
+}
   
 </script>
 @endsection

@@ -21,37 +21,37 @@
         <!-- Header -->
 
         <header class="header">
-
-            <!-- Top Bar -->
-            <div class="top_bar">
-                <div class="top_bar_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <ul class="top_bar_contact_list">
-                                        <li>
-                                            <div class="question">Have any questions?</div>
-                                        </li>
-                                        <li>
-                                            <div>(009) 35475 6688933 32</div>
-                                        </li>
-                                        <li>
-                                            <div>info@elaerntemplate.com</div>
-                                        </li>
-                                    </ul>
-                                    <div class="top_bar_login ml-auto">
-                                        <ul>
-                                            <li><a href="#">Register</a></li>
-                                            <li><a href="#">Login</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+<!-- Top Bar -->
+<div class="top_bar">
+    <div class="top_bar_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                        <ul class="top_bar_contact_list">
+                            <li>
+                                <div class="question">Have any questions?</div>
+                            </li>
+                            <li>
+                                <div>(009) 35475 6688933 32</div>
+                            </li>
+                            <li>
+                                <div>info@elaerntemplate.com</div>
+                            </li>
+                        </ul>
+                        <div class="top_bar_login ml-auto">
+                            <ul>
+                                <li><a href="/student/dashboard">User</a></li>
+                                <li><a href="/instructor/dashboard">Instructor</a></li>
+                                <li><a href="/admin/dashboard">admin</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
             <!-- Header Content -->
             <div class="header_container">
@@ -69,32 +69,24 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav d-flex">
-                                        <li><a href="/">home</a></li>
-                                        <li><a href="/all-courses">All Courses</a></li>
-                                        <li><a href="/student/mycourses">My courses</a></li>
-                                        <li><a href="/review/myreview">Review</a></li>
-                                        <li><a href="/student/myorders">My Orders</a></li>
-                                        <li class="ml-auto">
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fa fa-shopping-cart"></i> Cart
-                                                @php $cartItems = session('cart') ?? []; @endphp
-                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
-                                            </a>
-                                        </li>
-
-                                        <!-- Student Name -->
-                                        {{-- <h4 class="text-danger font-weight-bold">
-                                    {{ Auth::guard('student')->check() ? 
-                                    Auth::guard('student')->user()->name 
-                                    : 
-                                    '' 
-                                    }}
-										</h4> --}}
-
-                                        <!-- Student Name -->
+                                        <!-- Student  -->
                                         <h5 class="text-danger font-weight-bold d-flex">
                                             @auth('student')
-                                                {{ Auth::guard('student')->user()->name }}
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/mycourses">My courses</a></li>
+                                            <li><a href="/review/myreview">Review</a></li>
+                                            <li><a href="/student/myorders">My Orders</a></li>
+        
+                                            <li class="ml-auto">
+                                                <a href="/cart" class="btn btn-primary">
+                                                    <i class="fa fa-shopping-cart"></i> Cart
+                                                    @php $cartItems = session('cart') ?? []; @endphp
+                                                    <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="my-auto"> <span>{{ Auth::guard('student')->user()->name }}</span> </li>
                                                 <form method="POST" action="{{ route('student.logout') }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">
@@ -102,15 +94,25 @@
                                                     </button>
                                                 </form>
                                             @else
-                                                <a href="/student/login"> Log In </a>
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/login"> Log In </a></li>
                                             @endauth
                                         </h5>
-
-
+        
+                                        <!-- Student Name -->
+                                        {{-- <h4 class="text-danger font-weight-bold">
+                                            {{ Auth::guard('student')->check() ? 
+                                            Auth::guard('student')->user()->name 
+                                            : 
+                                            '' 
+                                            }}
+                                        </h4> --}}
+        
                                     </ul>
-
+        
                                     <!-- Hamburger -->
-
+        
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
@@ -210,7 +212,7 @@
                     @foreach ($products as $item)
                         <div class="col-lg-4 col-md-6">
                             <div class="course">
-                                <div class="course_image"><img src="{{ asset('images/' . $item['image']) }}" alt=""></div>
+                                <div class="course_image d-flex align-items-center" style="height: 300px ; border:2px solid rgba(128, 122, 122, 0.685)"><img class="img-fluid" style="height: fit-content" src="{{ asset('images/' . $item['image']) }}" alt=""></div>
                                 <div class="course_body">
                                     <div
                                         class="course_header d-flex flex-row align-items-center justify-content-start">

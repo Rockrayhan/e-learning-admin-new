@@ -71,32 +71,24 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav d-flex">
-                                        <li><a href="/">home</a></li>
-                                        <li><a href="about.html">about us</a></li>
-                                        <li><a href="/student/mycourses">My courses</a></li>
-                                        <li><a href="/review/myreview">Review</a></li>
-                                        <li><a href="contact.html">contact</a></li>
-                                        <li class="ml-auto">
-                                            <a href="#" class="btn btn-primary">
-                                                <i class="fa fa-shopping-cart"></i> Cart
-                                                @php $cartItems = session('cart') ?? []; @endphp
-                                                <span class="badge badge-light">{{ count($cartItems) }}</span>
-                                            </a>
-                                        </li>
-
-                                        <!-- Student Name -->
-                                        {{-- <h4 class="text-danger font-weight-bold">
-                                        {{ Auth::guard('student')->check() ? 
-                                        Auth::guard('student')->user()->name 
-                                        : 
-                                        '' 
-                                        }}
-                                    </h4> --}}
-
-                                        <!-- Student Name -->
+                                        <!-- Student  -->
                                         <h5 class="text-danger font-weight-bold d-flex">
                                             @auth('student')
-                                                {{ Auth::guard('student')->user()->name }}
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/mycourses">My courses</a></li>
+                                            <li><a href="/review/myreview">Review</a></li>
+                                            <li><a href="/student/myorders">My Orders</a></li>
+        
+                                            <li class="ml-auto">
+                                                <a href="/cart" class="btn btn-primary">
+                                                    <i class="fa fa-shopping-cart"></i> Cart
+                                                    @php $cartItems = session('cart') ?? []; @endphp
+                                                    <span class="badge badge-light">{{ count($cartItems) }}</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="my-auto"> <span>{{ Auth::guard('student')->user()->name }}</span> </li>
                                                 <form method="POST" action="{{ route('student.logout') }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">
@@ -104,13 +96,25 @@
                                                     </button>
                                                 </form>
                                             @else
-                                                <a href="/student/login"> Log In </a>
+                                            <li><a href="/">home</a></li>
+                                            <li><a href="/all-courses">All Courses</a></li>
+                                            <li><a href="/student/login"> Log In </a></li>
                                             @endauth
                                         </h5>
+        
+                                        <!-- Student Name -->
+                                        {{-- <h4 class="text-danger font-weight-bold">
+                                            {{ Auth::guard('student')->check() ? 
+                                            Auth::guard('student')->user()->name 
+                                            : 
+                                            '' 
+                                            }}
+                                        </h4> --}}
+        
                                     </ul>
-
+        
                                     <!-- Hamburger -->
-
+        
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
@@ -197,7 +201,7 @@
                             @if(count($product) == 0)
                             <h2>No Courses are available for you</h2>
                         @else
-                            <h2>Choose your course</h2>
+                            <h2>You Have {{count($product)}} Products.</h2>
                         @endif
                         </div>
                     </div>
@@ -208,7 +212,6 @@
                         <!-- Course -->
                         <div class="col-lg-4 col-md-6">
                             <div class="course">
-                                <div class="course_image"><img src="images/course_1.jpg" alt=""></div>
                                 <div class="course_body">
                                     <div
                                         class="course_header d-flex flex-row align-items-center justify-content-start">
