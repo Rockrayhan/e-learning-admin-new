@@ -16,7 +16,7 @@
 
 #### Instructor
 * Insert/Manage Courses
-* Insert Topics Based On a Course
+* Insert Topics , based On a Course
 * Can see his/her Topics
 * Email: instructor@gmail.com
 * pass: 123456789
