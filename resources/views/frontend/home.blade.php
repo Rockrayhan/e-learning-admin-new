@@ -50,9 +50,7 @@
                                                 alt=""></div>
                                         <div class="home_text">
                                             <div class="home_title" style="color: orange">Ektu Khani Tech</div>
-                                            <div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi
-                                                tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
-                                                augue ut, fermentum ipsum.</div>
+                                            <div class="home_subtitle">Get all your courses at a resonable price </div>
                                         </div>
                                         <div class="home_buttons">
                                             <div class="button home_button"><a href="#">learn more<div
@@ -82,9 +80,7 @@
                                                 alt=""></div>
                                         <div class="home_text">
                                             <div class="home_title" style="color: orange">Ektu Khani Tech</div>
-                                            <div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi
-                                                tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida
-                                                augue ut, fermentum ipsum.</div>
+                                            <div class="home_subtitle">Get all your courses at a resonable price </div>
                                         </div>
                                         <div class="home_buttons">
                                             <div class="button home_button"><a href="#">learn more<div
